@@ -464,71 +464,73 @@ public class APIClient {
     }
 
     public void updateBundle() {
-        if (ActivityUTILS.isMainThread()) {
-            throw new NetworkOnMainThreadException();
-        }
-        File bundleFile = new File(getBundleResource(ctx, BREAD_FILE));
-        Log.d(TAG, "updateBundle: " + bundleFile);
-        if (bundleFile.exists()) {
-            Log.d(TAG, bundleFile + ": updateBundle: exists");
+        return;
 
-            byte[] bFile = new byte[0];
-            try {
-                FileInputStream in = new FileInputStream(bundleFile);
-                bFile = IOUtils.toByteArray(in);
-                in.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            String latestVersion = getLatestVersion();
-            String currentTarVersion = null;
-            byte[] hash = CryptoHelper.sha256(bFile);
-
-            currentTarVersion = Utils.bytesToHex(hash);
-            Log.d(TAG, bundleFile + ": updateBundle: version of the current tar: " + currentTarVersion);
-//            FileHelper.printDirectoryTree(new File(getExtractedPath(ctx, null)));
-            if (latestVersion != null) {
-                if (latestVersion.equals(currentTarVersion)) {
-                    Log.d(TAG, bundleFile + ": updateBundle: have the latest version");
-                    tryExtractTar();
-                } else {
-                    Log.d(TAG, bundleFile + ": updateBundle: don't have the most recent version, download diff");
-                    downloadDiff(currentTarVersion);
-                    tryExtractTar();
-                }
-            } else {
-                Log.d(TAG, bundleFile + ": updateBundle: latestVersion is null");
-            }
-//            FileHelper.printDirectoryTree(new File(getExtractedPath(ctx, null)));
-
-        } else {
-            Log.d(TAG, bundleFile + ": updateBundle: bundle doesn't exist, downloading new copy");
-            long startTime = System.currentTimeMillis();
-            Request request = new Request.Builder()
-                    .url(String.format("%s/assets/bundles/%s/download", BASE_URL, BREAD_POINT))
-                    .get().build();
-            Response response = null;
-            byte[] body;
-            try {
-                response = sendRequest(request, false, 0);
-                Log.d(TAG, bundleFile + ": updateBundle: Downloaded, took: " + (System.currentTimeMillis() - startTime));
-                body = writeBundleToFile(response);
-            } finally {
-                if (response != null) response.close();
-            }
-            if (Utils.isNullOrEmpty(body)) {
-                Log.e(TAG, "updateBundle: body is null, returning.");
-                return;
-            }
-
-            boolean b = tryExtractTar();
-            if (!b) {
-                Log.e(TAG, "updateBundle: Failed to extract tar");
-            }
-        }
-
-        logFiles("updateBundle after", ctx);
+//        if (ActivityUTILS.isMainThread()) {
+//            throw new NetworkOnMainThreadException();
+//        }
+//        File bundleFile = new File(getBundleResource(ctx, BREAD_FILE));
+//        Log.d(TAG, "updateBundle: " + bundleFile);
+//        if (bundleFile.exists()) {
+//            Log.d(TAG, bundleFile + ": updateBundle: exists");
+//
+//            byte[] bFile = new byte[0];
+//            try {
+//                FileInputStream in = new FileInputStream(bundleFile);
+//                bFile = IOUtils.toByteArray(in);
+//                in.close();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//
+//            String latestVersion = getLatestVersion();
+//            String currentTarVersion = null;
+//            byte[] hash = CryptoHelper.sha256(bFile);
+//
+//            currentTarVersion = Utils.bytesToHex(hash);
+//            Log.d(TAG, bundleFile + ": updateBundle: version of the current tar: " + currentTarVersion);
+////            FileHelper.printDirectoryTree(new File(getExtractedPath(ctx, null)));
+//            if (latestVersion != null) {
+//                if (latestVersion.equals(currentTarVersion)) {
+//                    Log.d(TAG, bundleFile + ": updateBundle: have the latest version");
+//                    tryExtractTar();
+//                } else {
+//                    Log.d(TAG, bundleFile + ": updateBundle: don't have the most recent version, download diff");
+//                    downloadDiff(currentTarVersion);
+//                    tryExtractTar();
+//                }
+//            } else {
+//                Log.d(TAG, bundleFile + ": updateBundle: latestVersion is null");
+//            }
+////            FileHelper.printDirectoryTree(new File(getExtractedPath(ctx, null)));
+//
+//        } else {
+//            Log.d(TAG, bundleFile + ": updateBundle: bundle doesn't exist, downloading new copy");
+//            long startTime = System.currentTimeMillis();
+//            Request request = new Request.Builder()
+//                    .url(String.format("%s/assets/bundles/%s/download", BASE_URL, BREAD_POINT))
+//                    .get().build();
+//            Response response = null;
+//            byte[] body;
+//            try {
+//                response = sendRequest(request, false, 0);
+//                Log.d(TAG, bundleFile + ": updateBundle: Downloaded, took: " + (System.currentTimeMillis() - startTime));
+//                body = writeBundleToFile(response);
+//            } finally {
+//                if (response != null) response.close();
+//            }
+//            if (Utils.isNullOrEmpty(body)) {
+//                Log.e(TAG, "updateBundle: body is null, returning.");
+//                return;
+//            }
+//
+//            boolean b = tryExtractTar();
+//            if (!b) {
+//                Log.e(TAG, "updateBundle: Failed to extract tar");
+//            }
+//        }
+//
+//        logFiles("updateBundle after", ctx);
     }
 
     public String getLatestVersion() {
@@ -758,72 +760,74 @@ public class APIClient {
     }
 
     public void updatePlatform(final Context app) {
-        if (platformUpdating) {
-            Log.e(TAG, "updatePlatform: platform already Updating!");
-            return;
-        }
-        platformUpdating = true;
+        return;
 
-        //update Bundle
-        BRExecutor.getInstance().forBackgroundTasks().execute(new Runnable() {
-            @Override
-            public void run() {
-                Thread.currentThread().setName("UpdateBundle");
-                final long startTime = System.currentTimeMillis();
-                APIClient apiClient = APIClient.getInstance(ctx);
-                apiClient.updateBundle();
-                long endTime = System.currentTimeMillis();
-                Log.d(TAG, "updateBundle " + BREAD_POINT + ": DONE in " + (endTime - startTime) + "ms");
-                itemFinished();
-            }
-        });
-
-        //update feature flags
-        BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                Thread.currentThread().setName("updateFeatureFlag");
-                final long startTime = System.currentTimeMillis();
-                APIClient apiClient = APIClient.getInstance(ctx);
-                apiClient.updateFeatureFlag();
-                long endTime = System.currentTimeMillis();
-                Log.d(TAG, "updateFeatureFlag: DONE in " + (endTime - startTime) + "ms");
-                itemFinished();
-            }
-        });
-
-        //update kvStore
-        BRExecutor.getInstance().forBackgroundTasks().execute(new Runnable() {
-            @Override
-            public void run() {
-                Thread.currentThread().setName("updatePlatform");
-                final long startTime = System.currentTimeMillis();
-                APIClient apiClient = APIClient.getInstance(ctx);
-                apiClient.syncKvStore();
-                long endTime = System.currentTimeMillis();
-                Log.d(TAG, "syncKvStore: DONE in " + (endTime - startTime) + "ms");
-                itemFinished();
-            }
-        });
-
-        //update fee
-        BRExecutor.getInstance().forBackgroundTasks().execute(new Runnable() {
-            @Override
-            public void run() {
-                final long startTime = System.currentTimeMillis();
-                for (BaseWalletManager w : WalletsMaster.getInstance(app).getAllWallets()) {
-                    w.updateFee(app);
-                }
-                long endTime = System.currentTimeMillis();
-                Log.d(TAG, "update fee: DONE in " + (endTime - startTime) + "ms");
-                itemFinished();
-            }
-        });
+//        if (platformUpdating) {
+//            Log.e(TAG, "updatePlatform: platform already Updating!");
+//            return;
+//        }
+//        platformUpdating = true;
+//
+//        //update Bundle
+//        BRExecutor.getInstance().forBackgroundTasks().execute(new Runnable() {
+//            @Override
+//            public void run() {
+//                Thread.currentThread().setName("UpdateBundle");
+//                final long startTime = System.currentTimeMillis();
+//                APIClient apiClient = APIClient.getInstance(ctx);
+//                apiClient.updateBundle();
+//                long endTime = System.currentTimeMillis();
+//                Log.d(TAG, "updateBundle " + BREAD_POINT + ": DONE in " + (endTime - startTime) + "ms");
+//                itemFinished();
+//            }
+//        });
+//
+//        //update feature flags
+//        BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
+//                    Thread.sleep(2000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//                Thread.currentThread().setName("updateFeatureFlag");
+//                final long startTime = System.currentTimeMillis();
+//                APIClient apiClient = APIClient.getInstance(ctx);
+//                apiClient.updateFeatureFlag();
+//                long endTime = System.currentTimeMillis();
+//                Log.d(TAG, "updateFeatureFlag: DONE in " + (endTime - startTime) + "ms");
+//                itemFinished();
+//            }
+//        });
+//
+//        //update kvStore
+//        BRExecutor.getInstance().forBackgroundTasks().execute(new Runnable() {
+//            @Override
+//            public void run() {
+//                Thread.currentThread().setName("updatePlatform");
+//                final long startTime = System.currentTimeMillis();
+//                APIClient apiClient = APIClient.getInstance(ctx);
+//                apiClient.syncKvStore();
+//                long endTime = System.currentTimeMillis();
+//                Log.d(TAG, "syncKvStore: DONE in " + (endTime - startTime) + "ms");
+//                itemFinished();
+//            }
+//        });
+//
+//        //update fee
+//        BRExecutor.getInstance().forBackgroundTasks().execute(new Runnable() {
+//            @Override
+//            public void run() {
+//                final long startTime = System.currentTimeMillis();
+//                for (BaseWalletManager w : WalletsMaster.getInstance(app).getAllWallets()) {
+//                    w.updateFee(app);
+//                }
+//                long endTime = System.currentTimeMillis();
+//                Log.d(TAG, "update fee: DONE in " + (endTime - startTime) + "ms");
+//                itemFinished();
+//            }
+//        });
 
     }
 
