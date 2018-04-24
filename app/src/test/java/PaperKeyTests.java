@@ -1,7 +1,7 @@
 import android.util.Log;
 
-import com.breadwallet.tools.util.Bip39Reader;
-import com.breadwallet.wallet.WalletsMaster;
+import com.elicoinwallet.tools.util.Bip39Reader;
+import com.elicoinwallet.wallet.WalletsMaster;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
