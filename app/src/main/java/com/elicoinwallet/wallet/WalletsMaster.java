@@ -260,19 +260,19 @@ public class WalletsMaster {
     public void initWallets(final Context app) {
         if (!mWallets.contains(WalletBitcoinManager.getInstance(app)))
             mWallets.add(WalletBitcoinManager.getInstance(app));
-        if (!mWallets.contains(WalletBchManager.getInstance(app)))
-            mWallets.add(WalletBchManager.getInstance(app));
-        if (!mWallets.contains(WalletEthManager.getInstance(app))) {
-            BaseWalletManager ethWallet = WalletEthManager.getInstance(app);
-            mWallets.add(ethWallet);
-
-            if (ethWallet != null) {
-                ElicoinApp.generateWalletId();
-                for (BaseWalletManager wm : mWallets) {
-                    if (wm != null) setSpendingLimitIfNotSet(app, wm);
-                }
-            }
-        }
+//        if (!mWallets.contains(WalletBchManager.getInstance(app)))
+//            mWallets.add(WalletBchManager.getInstance(app));
+//        if (!mWallets.contains(WalletEthManager.getInstance(app))) {
+//            BaseWalletManager ethWallet = WalletEthManager.getInstance(app);
+//            mWallets.add(ethWallet);
+//
+//            if (ethWallet != null) {
+//                ElicoinApp.generateWalletId();
+//                for (BaseWalletManager wm : mWallets) {
+//                    if (wm != null) setSpendingLimitIfNotSet(app, wm);
+//                }
+//            }
+//        }
     }
 
     private void setSpendingLimitIfNotSet(final Context app, final BaseWalletManager wm) {
