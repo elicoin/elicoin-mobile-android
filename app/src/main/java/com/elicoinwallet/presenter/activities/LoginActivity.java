@@ -20,7 +20,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.elicoinwallet.BreadApp;
+import com.elicoinwallet.ElicoinApp;
 import com.elicoinwallet.R;
 import com.elicoinwallet.presenter.activities.camera.ScanQRActivity;
 import com.elicoinwallet.presenter.activities.util.BRActivity;
@@ -204,7 +204,7 @@ public class LoginActivity extends BRActivity {
             }
         }, 500);
 
-        BreadApp.addOnBackgroundedListener(new BreadApp.OnAppBackgrounded() {
+        ElicoinApp.addOnBackgroundedListener(new ElicoinApp.OnAppBackgrounded() {
             @Override
             public void onBackgrounded() {
                 //disconnect all wallets on backgrounded

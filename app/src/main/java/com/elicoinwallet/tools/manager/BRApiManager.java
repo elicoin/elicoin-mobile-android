@@ -6,7 +6,7 @@ import android.os.Handler;
 import android.os.NetworkOnMainThreadException;
 import android.util.Log;
 
-import com.elicoinwallet.BreadApp;
+import com.elicoinwallet.ElicoinApp;
 import com.elicoinwallet.presenter.activities.util.ActivityUTILS;
 import com.elicoinwallet.presenter.entities.CurrencyEntity;
 import com.elicoinwallet.tools.sqlite.CurrencyDataSource;
@@ -129,7 +129,7 @@ public class BRApiManager {
                         BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
                             @Override
                             public void run() {
-                                if (BreadApp.isAppInBackground(context)) {
+                                if (ElicoinApp.isAppInBackground(context)) {
                                     Log.e(TAG, "doInBackground: Stopping timer, no activity on.");
                                     stopTimerTask();
                                     return;
@@ -178,7 +178,7 @@ public class BRApiManager {
     }
 
     public static JSONArray fetchRates(Activity app, BaseWalletManager walletManager) {
-        String url = "https://" + BreadApp.HOST + "/rates?currency=" + walletManager.getIso(app);
+        String url = "https://" + ElicoinApp.HOST + "/rates?currency=" + walletManager.getIso(app);
         String jsonString = urlGET(app, url);
         JSONArray jsonArray = null;
         if (jsonString == null) {
@@ -219,7 +219,7 @@ public class BRApiManager {
             Log.e(TAG, "urlGET: network on main thread");
             throw new RuntimeException("network on main thread");
         }
-        Map<String, String> headers = BreadApp.getBreadHeaders();
+        Map<String, String> headers = ElicoinApp.getBreadHeaders();
 
         Request.Builder builder = new Request.Builder()
                 .url(myURL)

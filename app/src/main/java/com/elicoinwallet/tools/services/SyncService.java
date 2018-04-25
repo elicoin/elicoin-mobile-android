@@ -10,7 +10,7 @@ import android.content.IntentFilter;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
-import com.elicoinwallet.BreadApp;
+import com.elicoinwallet.ElicoinApp;
 import com.elicoinwallet.tools.manager.BRSharedPrefs;
 import com.elicoinwallet.tools.util.BRConstants;
 import com.elicoinwallet.wallet.WalletsMaster;
@@ -57,7 +57,7 @@ public class SyncService extends IntentService {
     public static final int PROGRESS_START = 0;
     public static final int PROGRESS_FINISH = 1;
 
-    private static final String PACKAGE_NAME = BreadApp.getBreadContext() == null ? null : BreadApp.getBreadContext().getApplicationContext().getPackageName();
+    private static final String PACKAGE_NAME = ElicoinApp.getBreadContext() == null ? null : ElicoinApp.getBreadContext().getApplicationContext().getPackageName();
 
     static {
         try {
@@ -65,7 +65,7 @@ public class SyncService extends IntentService {
         } catch (UnsatisfiedLinkError e) {
             e.printStackTrace();
             Log.d(TAG, "Native code library failed to load.\\n\" + " + e);
-            Log.d(TAG, "Installer Package Name -> " + (PACKAGE_NAME == null ? "null" : BreadApp.getBreadContext().getPackageManager().getInstallerPackageName(PACKAGE_NAME)));
+            Log.d(TAG, "Installer Package Name -> " + (PACKAGE_NAME == null ? "null" : ElicoinApp.getBreadContext().getPackageManager().getInstallerPackageName(PACKAGE_NAME)));
         }
     }
 

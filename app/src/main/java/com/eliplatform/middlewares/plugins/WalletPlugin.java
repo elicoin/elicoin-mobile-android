@@ -3,7 +3,7 @@ package com.eliplatform.middlewares.plugins;
 import android.app.Activity;
 import android.util.Log;
 
-import com.elicoinwallet.BreadApp;
+import com.elicoinwallet.ElicoinApp;
 import com.elicoinwallet.presenter.interfaces.BRAuthCompletion;
 import com.elicoinwallet.tools.manager.BREventManager;
 import com.elicoinwallet.tools.manager.BRSharedPrefs;
@@ -65,7 +65,7 @@ public class WalletPlugin implements Plugin {
     @Override
     public boolean handle(String target, final Request baseRequest, HttpServletRequest request, final HttpServletResponse response) {
         if (!target.startsWith("/_wallet")) return false;
-        Activity app = (Activity) BreadApp.getBreadContext();
+        Activity app = (Activity) ElicoinApp.getBreadContext();
 
         if (target.startsWith("/_wallet/info") && request.getMethod().equalsIgnoreCase("get")) {
             Log.i(TAG, "handling: " + target + " " + baseRequest.getMethod());

@@ -66,8 +66,8 @@ import static org.apache.commons.compress.utils.CharsetNames.ISO_8859_1;
  * THE SOFTWARE.
  */
 
-public class BreadApp extends Application {
-    private static final String TAG = BreadApp.class.getName();
+public class ElicoinApp extends Application {
+    private static final String TAG = ElicoinApp.class.getName();
     public static int DISPLAY_HEIGHT_PX;
     FingerprintManager mFingerprintManager;
     // host is the server(s) on which the API is hosted
@@ -79,7 +79,7 @@ public class BreadApp extends Application {
     public static boolean appInBackground;
     private static Context mContext;
 
-    private static final String PACKAGE_NAME = BreadApp.getBreadContext() == null ? null : BreadApp.getBreadContext().getApplicationContext().getPackageName();
+    private static final String PACKAGE_NAME = ElicoinApp.getBreadContext() == null ? null : ElicoinApp.getBreadContext().getApplicationContext().getPackageName();
 
     static {
         try {
@@ -87,7 +87,7 @@ public class BreadApp extends Application {
         } catch (UnsatisfiedLinkError e) {
             e.printStackTrace();
             Log.d(TAG, "Native code library failed to load.\\n\" + " + e);
-            Log.d(TAG, "Installer Package Name -> " + (PACKAGE_NAME == null ? "null" : BreadApp.getBreadContext().getPackageManager().getInstallerPackageName(PACKAGE_NAME)));
+            Log.d(TAG, "Installer Package Name -> " + (PACKAGE_NAME == null ? "null" : ElicoinApp.getBreadContext().getPackageManager().getInstallerPackageName(PACKAGE_NAME)));
         }
     }
 

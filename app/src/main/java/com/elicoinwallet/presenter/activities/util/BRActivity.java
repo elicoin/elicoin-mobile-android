@@ -6,7 +6,7 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.elicoinwallet.BreadApp;
+import com.elicoinwallet.ElicoinApp;
 import com.elicoinwallet.presenter.activities.DisabledActivity;
 import com.elicoinwallet.presenter.activities.HomeActivity;
 import com.elicoinwallet.presenter.activities.WalletActivity;
@@ -54,7 +54,7 @@ import com.eliplatform.tools.BRBitId;
 public class BRActivity extends Activity {
     private static final String TAG = BRActivity.class.getName();
     public static final Point screenParametersPoint = new Point();
-    private static final String PACKAGE_NAME = BreadApp.getBreadContext() == null ? null : BreadApp.getBreadContext().getApplicationContext().getPackageName();
+    private static final String PACKAGE_NAME = ElicoinApp.getBreadContext() == null ? null : ElicoinApp.getBreadContext().getApplicationContext().getPackageName();
 
     static {
         try {
@@ -62,7 +62,7 @@ public class BRActivity extends Activity {
         } catch (UnsatisfiedLinkError e) {
             e.printStackTrace();
             Log.d(TAG, "Native code library failed to load.\\n\" + " + e);
-            Log.d(TAG, "Installer Package Name -> " + (PACKAGE_NAME == null ? "null" : BreadApp.getBreadContext().getPackageManager().getInstallerPackageName(PACKAGE_NAME)));
+            Log.d(TAG, "Installer Package Name -> " + (PACKAGE_NAME == null ? "null" : ElicoinApp.getBreadContext().getPackageManager().getInstallerPackageName(PACKAGE_NAME)));
         }
     }
 
@@ -74,8 +74,8 @@ public class BRActivity extends Activity {
     @Override
     protected void onStop() {
         super.onStop();
-        BreadApp.activityCounter.decrementAndGet();
-        BreadApp.onStop(this);
+        ElicoinApp.activityCounter.decrementAndGet();
+        ElicoinApp.onStop(this);
 
         //open back to HomeActivity if needed
         if (this instanceof WalletActivity)
@@ -89,7 +89,7 @@ public class BRActivity extends Activity {
     protected void onResume() {
         init(this);
         super.onResume();
-        BreadApp.backgroundedTime = 0;
+        ElicoinApp.backgroundedTime = 0;
 
     }
 
@@ -238,8 +238,8 @@ public class BRActivity extends Activity {
             if (AuthManager.getInstance().isWalletDisabled(app))
                 AuthManager.getInstance().setWalletDisabled(app);
 
-        BreadApp.activityCounter.incrementAndGet();
-        BreadApp.setBreadContext(app);
+        ElicoinApp.activityCounter.incrementAndGet();
+        ElicoinApp.setBreadContext(app);
 
         if (!HTTPServer.isStarted())
             BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
@@ -255,11 +255,11 @@ public class BRActivity extends Activity {
 
     private void lockIfNeeded(Activity app) {
         //lock wallet if 3 minutes passed
-        if (BreadApp.backgroundedTime != 0
-                && ((System.currentTimeMillis() - BreadApp.backgroundedTime) >= 180 * 1000)
+        if (ElicoinApp.backgroundedTime != 0
+                && ((System.currentTimeMillis() - ElicoinApp.backgroundedTime) >= 180 * 1000)
                 && !(app instanceof DisabledActivity)) {
             if (!BRKeyStore.getPinCode(app).isEmpty()) {
-                Log.e(TAG, "lockIfNeeded: " + BreadApp.backgroundedTime);
+                Log.e(TAG, "lockIfNeeded: " + ElicoinApp.backgroundedTime);
                 BRAnimator.startBreadActivity(app, true);
             }
         }

@@ -5,7 +5,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.util.Log;
 
-import com.elicoinwallet.BreadApp;
+import com.elicoinwallet.ElicoinApp;
 import com.elicoinwallet.tools.util.Utils;
 import com.eliplatform.APIClient;
 
@@ -53,7 +53,7 @@ import static com.eliplatform.APIClient.BASE_URL;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-public class BREventManager implements BreadApp.OnAppBackgrounded {
+public class BREventManager implements ElicoinApp.OnAppBackgrounded {
     private static final String TAG = BREventManager.class.getName();
 
     private static BREventManager instance;
@@ -62,7 +62,7 @@ public class BREventManager implements BreadApp.OnAppBackgrounded {
 
     private BREventManager() {
         sessionId = UUID.randomUUID().toString();
-        BreadApp.addOnBackgroundedListener(this);
+        ElicoinApp.addOnBackgroundedListener(this);
     }
 
     public static BREventManager getInstance() {
@@ -112,7 +112,7 @@ public class BREventManager implements BreadApp.OnAppBackgrounded {
 //            Log.e(TAG, "saveEvents: insert json to array: " + obj);
             array.put(obj);
         }
-        Context app = BreadApp.getBreadContext();
+        Context app = ElicoinApp.getBreadContext();
         if (app != null) {
             String fileName = app.getFilesDir().getAbsolutePath() + "/events/" + UUID.randomUUID().toString();
             writeEventsToDisk(fileName, array.toString());
@@ -123,7 +123,7 @@ public class BREventManager implements BreadApp.OnAppBackgrounded {
 
     private void pushToServer() {
         Log.d(TAG, "pushToServer()");
-        Context app = BreadApp.getBreadContext();
+        Context app = ElicoinApp.getBreadContext();
         Log.d(TAG, "BREventManager TEST -1 -> ");
 
         if (app != null) {

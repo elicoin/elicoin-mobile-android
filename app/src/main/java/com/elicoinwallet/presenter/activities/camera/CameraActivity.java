@@ -42,7 +42,7 @@ import android.view.TextureView;
 import android.view.View;
 import android.widget.Toast;
 
-import com.elicoinwallet.BreadApp;
+import com.elicoinwallet.ElicoinApp;
 import com.elicoinwallet.R;
 import com.elicoinwallet.presenter.activities.util.BRActivity;
 import com.elicoinwallet.tools.threads.executor.BRExecutor;
@@ -895,7 +895,7 @@ public class CameraActivity extends BRActivity implements View.OnClickListener, 
                         public void run() {
                             try {
                                 Thread.sleep(1000);
-                                CameraPlugin.handleCameraImageTaken(BreadApp.getBreadContext(), bytes);
+                                CameraPlugin.handleCameraImageTaken(ElicoinApp.getBreadContext(), bytes);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }

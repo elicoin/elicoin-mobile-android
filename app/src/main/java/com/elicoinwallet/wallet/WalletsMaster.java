@@ -10,7 +10,7 @@ import android.security.keystore.UserNotAuthenticatedException;
 import android.support.annotation.WorkerThread;
 import android.util.Log;
 
-import com.elicoinwallet.BreadApp;
+import com.elicoinwallet.ElicoinApp;
 import com.elicoinwallet.R;
 import com.elicoinwallet.core.BRCoreKey;
 import com.elicoinwallet.core.BRCoreMasterPubKey;
@@ -267,7 +267,7 @@ public class WalletsMaster {
             mWallets.add(ethWallet);
 
             if (ethWallet != null) {
-                BreadApp.generateWalletId();
+                ElicoinApp.generateWalletId();
                 for (BaseWalletManager wm : mWallets) {
                     if (wm != null) setSpendingLimitIfNotSet(app, wm);
                 }
@@ -296,7 +296,7 @@ public class WalletsMaster {
     @WorkerThread
     public void initLastWallet(Context app) {
         if (app == null) {
-            app = BreadApp.getBreadContext();
+            app = ElicoinApp.getBreadContext();
             if (app == null) {
                 Log.e(TAG, "initLastWallet: FAILED, app is null");
                 return;

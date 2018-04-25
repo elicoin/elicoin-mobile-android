@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.elicoinwallet.BreadApp;
+import com.elicoinwallet.ElicoinApp;
 import com.elicoinwallet.R;
 import com.elicoinwallet.presenter.activities.util.ActivityUTILS;
 import com.elicoinwallet.presenter.activities.util.BRActivity;
@@ -103,7 +103,7 @@ public class AboutActivity extends BRActivity {
             }
         });
 
-        mRewardsId.setText(BreadApp.generateWalletId());
+        mRewardsId.setText(ElicoinApp.generateWalletId());
 
         mCopy.setOnClickListener(new View.OnClickListener() {
             @Override

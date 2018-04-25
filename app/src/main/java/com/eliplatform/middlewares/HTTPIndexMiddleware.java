@@ -3,7 +3,7 @@ package com.eliplatform.middlewares;
 import android.content.Context;
 import android.util.Log;
 
-import com.elicoinwallet.BreadApp;
+import com.elicoinwallet.ElicoinApp;
 import com.eliplatform.APIClient;
 import com.eliplatform.BRHTTPHelper;
 import com.eliplatform.interfaces.Middleware;
@@ -49,7 +49,7 @@ public class HTTPIndexMiddleware implements Middleware {
     @Override
     public boolean handle(String target, org.eclipse.jetty.server.Request baseRequest, HttpServletRequest request, HttpServletResponse response) {
         Log.i(TAG, "handling: " + target + " " + baseRequest.getMethod());
-        Context app = BreadApp.getBreadContext();
+        Context app = ElicoinApp.getBreadContext();
         if (app == null) {
             Log.e(TAG, "handle: app is null!");
             return true;

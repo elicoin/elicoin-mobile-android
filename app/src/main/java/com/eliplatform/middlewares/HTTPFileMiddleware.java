@@ -3,7 +3,7 @@ package com.eliplatform.middlewares;
 import android.content.Context;
 import android.util.Log;
 
-import com.elicoinwallet.BreadApp;
+import com.elicoinwallet.ElicoinApp;
 import com.elicoinwallet.tools.crypto.CryptoHelper;
 import com.elicoinwallet.tools.util.TypesConverter;
 import com.elicoinwallet.tools.util.Utils;
@@ -61,7 +61,7 @@ public class HTTPFileMiddleware implements Middleware {
             return BRHTTPHelper.handleSuccess(200, null, baseRequest, response, null);
         }
 
-        Context app = BreadApp.getBreadContext();
+        Context app = ElicoinApp.getBreadContext();
         if (app == null) {
             Log.e(TAG, "handle: app is null!");
             return true;

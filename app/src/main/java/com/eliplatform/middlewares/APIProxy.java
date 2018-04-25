@@ -3,7 +3,7 @@ package com.eliplatform.middlewares;
 import android.content.Context;
 import android.util.Log;
 
-import com.elicoinwallet.BreadApp;
+import com.elicoinwallet.ElicoinApp;
 import com.eliplatform.APIClient;
 import com.eliplatform.interfaces.Middleware;
 
@@ -69,7 +69,7 @@ public class APIProxy implements Middleware {
             "connection"};
 
     public APIProxy() {
-        Context app = BreadApp.getBreadContext();
+        Context app = ElicoinApp.getBreadContext();
         if (app == null) {
             Log.e(TAG, "APIProxy: app is null!");
         }

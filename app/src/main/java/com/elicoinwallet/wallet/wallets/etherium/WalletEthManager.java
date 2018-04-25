@@ -5,7 +5,7 @@ import android.content.Context;
 import android.security.keystore.UserNotAuthenticatedException;
 import android.util.Log;
 
-import com.elicoinwallet.BreadApp;
+import com.elicoinwallet.ElicoinApp;
 import com.elicoinwallet.BuildConfig;
 import com.elicoinwallet.R;
 import com.elicoinwallet.core.ethereum.BREthereumAmount;
@@ -327,7 +327,7 @@ public class WalletEthManager implements BaseWalletManager, BREthereumLightNode.
     public void updateFee(Context app) {
 
         if (app == null) {
-            app = BreadApp.getBreadContext();
+            app = ElicoinApp.getBreadContext();
 
             if (app == null) {
                 Log.d(TAG, "updateFee: FAILED, app is null");
@@ -335,7 +335,7 @@ public class WalletEthManager implements BaseWalletManager, BREthereumLightNode.
             }
         }
 
-        String jsonString = BRApiManager.urlGET(app, "https://" + BreadApp.HOST + "/fee-per-kb?currency=" + getIso(app));
+        String jsonString = BRApiManager.urlGET(app, "https://" + ElicoinApp.HOST + "/fee-per-kb?currency=" + getIso(app));
 
         if (jsonString == null || jsonString.isEmpty()) {
             Log.e(TAG, "updateFeePerKb: failed to update fee, response string: " + jsonString);
@@ -517,7 +517,7 @@ public class WalletEthManager implements BaseWalletManager, BREthereumLightNode.
 
     @Override
     public boolean networkIsReachable() {
-        Context app = BreadApp.getBreadContext();
+        Context app = ElicoinApp.getBreadContext();
         return InternetManager.getInstance().isConnected(app);
     }
 
@@ -661,7 +661,7 @@ public class WalletEthManager implements BaseWalletManager, BREthereumLightNode.
             @Override
             public void run() {
                 Log.e(TAG, "getBalance: " + address);
-                final String eth_url = "https://" + BreadApp.HOST + JsonRpcConstants.BRD_ETH_RPC_ENDPOINT;
+                final String eth_url = "https://" + ElicoinApp.HOST + JsonRpcConstants.BRD_ETH_RPC_ENDPOINT;
 //        Log.d(TAG, "Making rpc request to " + eth_url);
                 final JSONObject payload = new JSONObject();
                 final JSONArray params = new JSONArray();
@@ -722,7 +722,7 @@ public class WalletEthManager implements BaseWalletManager, BREthereumLightNode.
         BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
             @Override
             public void run() {
-                final String eth_url = "https://" + BreadApp.HOST + JsonRpcConstants.BRD_ETH_RPC_ENDPOINT;
+                final String eth_url = "https://" + ElicoinApp.HOST + JsonRpcConstants.BRD_ETH_RPC_ENDPOINT;
                 Log.d(TAG, "Making rpc request to -> " + eth_url);
                 final JSONObject payload = new JSONObject();
                 final JSONArray params = new JSONArray();
@@ -770,7 +770,7 @@ public class WalletEthManager implements BaseWalletManager, BREthereumLightNode.
         BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
             @Override
             public void run() {
-                final String eth_url = "https://" + BreadApp.HOST + JsonRpcConstants.BRD_ETH_RPC_ENDPOINT;
+                final String eth_url = "https://" + ElicoinApp.HOST + JsonRpcConstants.BRD_ETH_RPC_ENDPOINT;
                 Log.d(TAG, "Making rpc request to -> " + eth_url);
                 final JSONObject payload = new JSONObject();
                 final JSONArray params = new JSONArray();
@@ -825,7 +825,7 @@ public class WalletEthManager implements BaseWalletManager, BREthereumLightNode.
         BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
             @Override
             public void run() {
-                final String eth_url = "https://" + BreadApp.HOST + JsonRpcConstants.BRD_ETH_RPC_ENDPOINT;
+                final String eth_url = "https://" + ElicoinApp.HOST + JsonRpcConstants.BRD_ETH_RPC_ENDPOINT;
                 Log.d(TAG, "Making rpc request to -> " + eth_url);
 
                 JsonRpcRequest request = new JsonRpcRequest();
@@ -870,7 +870,7 @@ public class WalletEthManager implements BaseWalletManager, BREthereumLightNode.
                         BRExecutor.getInstance().forMainThreadTasks().execute(new Runnable() {
                             @Override
                             public void run() {
-                                final Context app = BreadApp.getBreadContext();
+                                final Context app = ElicoinApp.getBreadContext();
                                 if (app != null && app instanceof Activity) {
                                     if (!Utils.isNullOrEmpty(finalTxHash)) {
                                         PostAuth.stampMetaData(app, finalTxHash.getBytes());
@@ -912,7 +912,7 @@ public class WalletEthManager implements BaseWalletManager, BREthereumLightNode.
             public void run() {
 
                 //final String eth_rpc_url = String.format(JsonRpcConstants.ETH_RPC_TX_LIST, mWallet.getAccount().getPrimaryAddress());
-                final String eth_rpc_url = "https://" + BreadApp.HOST + JsonRpcConstants.BRD_ETH_TX_ENDPOINT + "query?module=account&action=txlist&address=" + address;
+                final String eth_rpc_url = "https://" + ElicoinApp.HOST + JsonRpcConstants.BRD_ETH_TX_ENDPOINT + "query?module=account&action=txlist&address=" + address;
 
                 final JsonRpcRequest request = new JsonRpcRequest();
                 final JSONObject payload = new JSONObject();
@@ -1062,7 +1062,7 @@ public class WalletEthManager implements BaseWalletManager, BREthereumLightNode.
                                             (mWallet.getAccount().getPrimaryAddress().equalsIgnoreCase(txFrom) ? address : txFrom),
                                             (mWallet.getAccount().getPrimaryAddress().equalsIgnoreCase(txTo) ? address : txTo),
                                             txContract, txValue, txGas, txGasPrice, txData, txNonce, txGasUsed, txBlockNumber, txBlockHash, txBlockConfirmations, txBlockTransactionIndex, txBlockTimestamp, txIsError);
-                                    Context app = BreadApp.getBreadContext();
+                                    Context app = ElicoinApp.getBreadContext();
                                     int blockHeight = Integer.valueOf(txBlockNumber) + Integer.valueOf(txBlockConfirmations);
                                     if (app != null && blockHeight != Integer.MAX_VALUE && blockHeight > 0) {
                                         Log.e(TAG, "onRpcRequestCompleted: putLastBlockHeight: " + blockHeight);

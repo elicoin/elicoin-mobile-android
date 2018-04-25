@@ -3,7 +3,7 @@ package com.eliplatform.middlewares.plugins;
 import android.content.Context;
 import android.util.Log;
 
-import com.elicoinwallet.BreadApp;
+import com.elicoinwallet.ElicoinApp;
 import com.eliplatform.APIClient;
 import com.eliplatform.BRHTTPHelper;
 import com.eliplatform.interfaces.Plugin;
@@ -54,7 +54,7 @@ public class KVStorePlugin implements Plugin {
         if (target.startsWith("/_kv/")) {
             Log.i(TAG, "handling: " + target + " " + baseRequest.getMethod());
             String key = target.replace("/_kv/", "");
-            Context app = BreadApp.getBreadContext();
+            Context app = ElicoinApp.getBreadContext();
             if (app == null) {
                 Log.e(TAG, "handle: context is null: " + target + " " + baseRequest.getMethod());
                 return BRHTTPHelper.handleError(500, "context is null", baseRequest, response);

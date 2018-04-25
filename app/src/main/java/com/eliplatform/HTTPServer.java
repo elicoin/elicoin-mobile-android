@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 
-import com.elicoinwallet.BreadApp;
+import com.elicoinwallet.ElicoinApp;
 import com.elicoinwallet.tools.threads.executor.BRExecutor;
 import com.elicoinwallet.tools.util.Utils;
 import com.eliplatform.interfaces.Middleware;
@@ -152,7 +152,7 @@ public class HTTPServer {
 
     private static boolean dispatch(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response) {
         Log.d(TAG, "TRYING TO HANDLE: " + target + " (" + request.getMethod() + ")");
-        final Context app = BreadApp.getBreadContext();
+        final Context app = ElicoinApp.getBreadContext();
         boolean result = false;
         if (target.equalsIgnoreCase("/_close")) {
             if (app != null) {

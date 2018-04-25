@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.elicoinwallet.BreadApp;
+import com.elicoinwallet.ElicoinApp;
 import com.elicoinwallet.R;
 import com.elicoinwallet.core.BRCoreAddress;
 import com.elicoinwallet.core.BRCorePaymentProtocolRequest;
@@ -75,7 +75,7 @@ public class PaymentProtocolTask extends AsyncTask<String, String, String> {
     //params[0] = uri, params[1] = label
     @Override
     protected String doInBackground(String... params) {
-        app = (Activity) BreadApp.getBreadContext();
+        app = (Activity) ElicoinApp.getBreadContext();
         InputStream in;
         try {
             Log.e(TAG, "the uri: " + params[0]);
