@@ -253,7 +253,8 @@ public class AuthManager {
     }
 
     public static boolean isFingerPrintAvailableAndSetup(Context context) {
-        return Utils.isFingerprintAvailable(context) && Utils.isFingerprintEnrolled(context);
+        return false;
+        //return Utils.isFingerprintAvailable(context) && Utils.isFingerprintEnrolled(context);
     }
 
     public interface OnPinSuccess {

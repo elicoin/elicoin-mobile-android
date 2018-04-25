@@ -102,7 +102,8 @@ public class ElicoinApp extends Application {
         super.onCreate();
         if (Utils.isEmulatorOrDebug(this)) {
 //            BRKeyStore.putFailCount(0, this);
-            HOST = "stage2.breadwallet.com";
+//            HOST = "stage2.breadwallet.com";
+            HOST = "ahosslasfasfa.com";
         }
             BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
                 @Override
