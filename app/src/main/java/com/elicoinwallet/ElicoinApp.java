@@ -103,6 +103,7 @@ public class ElicoinApp extends Application {
         if (Utils.isEmulatorOrDebug(this)) {
 //            BRKeyStore.putFailCount(0, this);
             HOST = "stage2.breadwallet.com";
+        }
             BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
                 @Override
                 public void run() {
@@ -110,7 +111,7 @@ public class ElicoinApp extends Application {
 
                 }
             });
-        }
+
         mContext = this;
 
         if (!Utils.isEmulatorOrDebug(this) && IS_ALPHA)
