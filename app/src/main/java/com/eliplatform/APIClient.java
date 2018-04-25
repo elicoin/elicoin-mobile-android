@@ -328,7 +328,7 @@ public class APIClient {
         ResponseBody postReqBody = null;
         byte[] data = new byte[0];
         try {
-            OkHttpClient client = new OkHttpClient.Builder().followRedirects(false).connectTimeout(10, TimeUnit.SECONDS)/*.addInterceptor(new LoggingInterceptor())*/.build();
+            OkHttpClient client = new OkHttpClient.Builder().followRedirects(false).connectTimeout(10, TimeUnit.SECONDS).addInterceptor(new LoggingInterceptor()).build();
 //            Log.e(TAG, "sendRequest: before executing the request: " + request.headers().toString());
             Log.d(TAG, "sendRequest: headers for : " + request.url() + "\n" + request.headers());
             String agent = Utils.getAgentString(ctx, "OkHttp/3.4.1");
