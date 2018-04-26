@@ -90,9 +90,12 @@ public class BRApiManager {
         Set<CurrencyEntity> set = new LinkedHashSet<>();
         try {
             JSONArray eli_arr = fetchElicoin(context);
-            JSONObject eli_tmpObj = (JSONObject) eli_arr.get(0);
-            double eli_multiplier = eli_tmpObj.getDouble("Last");
-            JSONArray arr = fetchRates(context, walletManager);
+            double eli_multiplier = 0;
+            if(eli_arr != null){
+                JSONObject eli_tmpObj = (JSONObject) eli_arr.get(0);
+                eli_multiplier = eli_tmpObj.getDouble("Last");
+            }
+            JSONArray arr = backupFetchRates(context, walletManager);
             if (arr != null) {
                 int length = arr.length();
                 for (int i = 0; i < length; i++) {
