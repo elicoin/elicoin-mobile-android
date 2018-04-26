@@ -121,6 +121,7 @@ public class FragmentSupport extends Fragment {
             theUrl = theUrl + "/article?slug=" + articleId + "&currency=" + walletIso.toLowerCase();
 
         Log.d(TAG, "onCreate: theUrl: " + theUrl + ", articleId: " + articleId);
+        theUrl = "https://coinlib.io/widget?type=single&theme=light&coin_id=652958&pref_coin_id=1505";
         webView.loadUrl(theUrl);
 
         return rootView;

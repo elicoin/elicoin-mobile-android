@@ -295,7 +295,7 @@
                     android:layout_marginTop="16dp"
                     android:clickable="false"
                     android:drawablePadding="8dp"
-                    android:drawableStart="@drawable/ic_question_mark_shape"
+                    android:drawableStart="@drawable/ic_check_mark_darkblue"
                     android:focusable="false"
                     android:paddingBottom="4dp"
                     android:text="@string/MenuButton.support"
