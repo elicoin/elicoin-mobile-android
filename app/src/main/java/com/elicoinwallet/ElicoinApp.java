@@ -148,7 +148,9 @@ public class ElicoinApp extends Application {
     }
 
     public static synchronized String generateWalletId() {
-
+        if(true){
+            return " ";
+        }
         // First, get the ETH wallet address
         BaseWalletManager ethWallet = WalletsMaster.getInstance(mContext).getWalletByIso(mContext, "ETH");
         String ethAddress = ethWallet.getReceiveAddress(mContext).stringify();
