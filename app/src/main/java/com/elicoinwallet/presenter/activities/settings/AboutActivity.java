@@ -103,7 +103,7 @@ public class AboutActivity extends BRActivity {
             }
         });
 
-        mRewardsId.setText(ElicoinApp.generateWalletId());
+        mRewardsId.setText(" ");
 
         mCopy.setOnClickListener(new View.OnClickListener() {
             @Override
