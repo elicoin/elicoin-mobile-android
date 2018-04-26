@@ -89,6 +89,9 @@ public class BRApiManager {
         }
         Set<CurrencyEntity> set = new LinkedHashSet<>();
         try {
+            JSONArray eli_arr = fetchElicoin(context);
+            JSONObject eli_tmpObj = (JSONObject) eli_arr.get(0);
+            double eli_multiplier = eli_tmpObj.getDouble("Last");
             JSONArray arr = fetchRates(context, walletManager);
             if (arr != null) {
                 int length = arr.length();
@@ -98,7 +101,7 @@ public class BRApiManager {
                         JSONObject tmpObj = (JSONObject) arr.get(i);
                         tmp.name = tmpObj.getString("name");
                         tmp.code = tmpObj.getString("code");
-                        tmp.rate = (float) tmpObj.getDouble("rate");
+                        tmp.rate = (float) (tmpObj.getDouble("rate")*eli_multiplier);
                         String selectedISO = BRSharedPrefs.getPreferredFiatIso(context);
                         if (tmp.code.equalsIgnoreCase(selectedISO)) {
                             BRSharedPrefs.putPreferredFiatIso(context, tmp.code);
@@ -175,6 +178,23 @@ public class BRApiManager {
             timer.cancel();
             timer = null;
         }
+    }
+
+    public static JSONArray fetchElicoin(Activity app){
+        String url = "https://api.crex24.com/CryptoExchangeService/BotPublic/ReturnTicker?request=[NamePairs=BTC_ELI]";
+        String jsonString = urlGET(app, url);
+        JSONArray jsonArray = null;
+        if (jsonString == null) {
+            Log.e(TAG, "fetchRates for Elicoin: failed, response is null");
+            return null;
+        }
+        try {
+            JSONObject obj = new JSONObject(jsonString);
+            jsonArray = obj.getJSONArray("Tickers");
+
+        } catch (JSONException ignored) {
+        }
+        return jsonArray;
     }
 
     public static JSONArray fetchRates(Activity app, BaseWalletManager walletManager) {
