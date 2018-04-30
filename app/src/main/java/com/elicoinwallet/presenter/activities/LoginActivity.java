@@ -72,6 +72,7 @@ public class LoginActivity extends BRActivity {
 
     private Button leftButton;
     private Button rightButton;
+    private Button midButton;
 
 
     public static LoginActivity getApp() {
@@ -124,6 +125,7 @@ public class LoginActivity extends BRActivity {
 
         leftButton = findViewById(R.id.left_button);
         rightButton = findViewById(R.id.right_button);
+        midButton = findViewById(R.id.mid_button);
 
         setUpOfflineButtons();
 
@@ -170,6 +172,16 @@ public class LoginActivity extends BRActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            }
+        });
+
+        midButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!BRAnimator.isClickAllowed()) return;
+                BaseWalletManager wm = WalletsMaster.getInstance(LoginActivity.this).getCurrentWallet(LoginActivity.this);
+
+                BRAnimator.showSupportFragment(LoginActivity.this, null, wm);
             }
         });
 
