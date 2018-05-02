@@ -147,6 +147,7 @@
 
     <ImageButton
         android:id="@+id/faq_button"
+        android:visibility="invisible"
         android:layout_width="@dimen/faq_dimen"
         android:layout_height="@dimen/faq_dimen"
         android:layout_marginEnd="@dimen/bread_margin"
