@@ -104,14 +104,14 @@ public class WalletBitcoinManager extends BRCoreWalletManager implements BaseWal
 
     private static final String TAG = WalletBitcoinManager.class.getName();
 
-    private static String ISO = "BTC";
+    private static String ISO = "ELI";
 
     public static final int ONE_BITCOIN = 100000000;
 
-    private static final String mName = "Bitcoin";
-    public static final String BTC_SCHEME = "bitcoin";
+    private static final String mName = "Elicoin";
+    public static final String BTC_SCHEME = "elicoin";
 
-    public static final long MAX_BTC = 21000000;
+    public static final long MAX_BTC = 10000000;
 
     private static WalletBitcoinManager instance;
     private WalletUiConfiguration uiConfig;
@@ -297,6 +297,27 @@ public class WalletBitcoinManager extends BRCoreWalletManager implements BaseWal
 
     @Override
     public void updateFee(Context app) {
+        if (app == null) {
+            app = ElicoinApp.getBreadContext();
+            if (app == null) {
+                Log.e(TAG, "updateFee: FAILED, app is null");
+                return;
+            }
+        }
+
+        BigDecimal fee;
+        BigDecimal economyFee;
+        fee = new BigDecimal(100);
+        economyFee = new BigDecimal(0); // Api returned 10000 for both
+        Log.e(TAG, "updateFee: " + getIso(app) + ":" + fee + "|" + economyFee);
+        BRSharedPrefs.putFeeRate(app, getIso(app), fee);
+        getWallet().setFeePerKb(BRSharedPrefs.getFavorStandardFee(app, getIso(app)) ? fee.longValue() : economyFee.longValue());
+        BRSharedPrefs.putFeeTime(app, getIso(app), System.currentTimeMillis()); //store the time of the last successful fee fetch
+        BRSharedPrefs.putEconomyFeeRate(app, getIso(app), economyFee);
+
+    }
+
+    public void updateFeeOld(Context app) {
         if (app == null) {
             app = ElicoinApp.getBreadContext();
             if (app == null) {

@@ -16,7 +16,7 @@
     <item name="dark_blue" type="color">#4C98FD</item>
     <item name="notification_gradient_start" type="color">#63BCFF</item>
     <item name="notification_gradient_end" type="color">#378DFD</item>
-    <item name="wallet_orange" type="color">#ff8000</item>
+    <item name="wallet_orange" type="color">#ff8f00</item>
     <item name="white_trans" type="color">#32ffffff</item>
     <item name="black_trans" type="color">#b5000000</item>
     <item name="red_text" type="color">#FF5454</item>

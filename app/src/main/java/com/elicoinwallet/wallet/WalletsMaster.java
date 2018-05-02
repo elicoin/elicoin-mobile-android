@@ -89,7 +89,7 @@ public class WalletsMaster {
 //        Log.d(TAG, "getWalletByIso() Getting wallet by ISO -> " + iso);
         if (Utils.isNullOrEmpty(iso))
             throw new RuntimeException("getWalletByIso with iso = null, Cannot happen!");
-        if (iso.equalsIgnoreCase("BTC"))
+        if (iso.equalsIgnoreCase("ELI"))
             return WalletBitcoinManager.getInstance(app);
         //if (iso.equalsIgnoreCase("BCH"))
         //    return WalletBchManager.getInstance(app);
@@ -178,6 +178,9 @@ public class WalletsMaster {
     }
 
     public boolean isIsoCrypto(Context app, String iso) {
+        if(iso.equalsIgnoreCase("eth")) return true;
+        if(iso.equalsIgnoreCase("btc")) return true;
+        if(iso.equalsIgnoreCase("bch")) return true;
         for (BaseWalletManager w : mWallets) {
             if (w.getIso(app).equalsIgnoreCase(iso)) return true;
         }
@@ -303,7 +306,7 @@ public class WalletsMaster {
             }
         }
         BaseWalletManager wallet = getWalletByIso(app, BRSharedPrefs.getCurrentWalletIso(app));
-        if (wallet == null) wallet = getWalletByIso(app, "BTC");
+        if (wallet == null) wallet = getWalletByIso(app, "ELI");
         wallet.connect(app);
     }
 

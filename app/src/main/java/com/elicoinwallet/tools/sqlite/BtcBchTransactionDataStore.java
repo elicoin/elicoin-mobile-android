@@ -88,7 +88,7 @@ public class BtcBchTransactionDataStore implements BRDataSourceInterface {
 
             database.setTransactionSuccessful();
 //            for (OnTxAdded listener : listeners) {
-//                if (listener != null) listener.onTxAdded("BTC");
+//                if (listener != null) listener.onTxAdded("ELI");
 //            }
             return transactionEntity1;
         } catch (Exception ex) {

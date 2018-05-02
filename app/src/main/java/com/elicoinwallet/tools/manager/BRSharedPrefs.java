@@ -294,8 +294,8 @@ public class BRSharedPrefs {
     public static String getCurrentWalletIso(Context activity) {
 //        Log.d(TAG, "getCurrentWalletIso() Activity -> " + activity.getClass().getSimpleName());
         SharedPreferences prefs = activity.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-//        Log.d(TAG, "Getting current wallet ISO -> " + prefs.getString("currentWalletIso", "BTC"));
-        return prefs.getString("currentWalletIso", "BTC");
+//        Log.d(TAG, "Getting current wallet ISO -> " + prefs.getString("currentWalletIso", "ELI"));
+        return prefs.getString("currentWalletIso", "ELI");
     }
 
     public static void putCurrentWalletIso(Context activity, String iso) {
@@ -374,7 +374,7 @@ public class BRSharedPrefs {
     // BTC, mBTC, Bits
     public static int getCryptoDenomination(Context context, String iso) {//ignore iso, using same denomination for both for now
         SharedPreferences settingsToGet = context.getSharedPreferences(PREFS_NAME, 0);
-        return settingsToGet.getInt("currencyUnit", BRConstants.CURRENT_UNIT_BITS);
+        return settingsToGet.getInt("currencyUnit", BRConstants.CURRENT_UNIT_BITCOINS);
     }
 
     // BTC, mBTC, Bits

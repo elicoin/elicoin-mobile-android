@@ -25,7 +25,16 @@ add_library( # The name of the library.
 
              # Shared library.
              SHARED
-
+             # Yescrypt hash files
+            src/main/jni/breadwallet-core/yescrypt/yescrypt.h
+            src/main/jni/breadwallet-core/yescrypt/yescrypt.c
+            src/main/jni/breadwallet-core/yescrypt/sha256.h
+            src/main/jni/breadwallet-core/yescrypt/sha256_c.h
+            src/main/jni/breadwallet-core/yescrypt/yescrypt-best_c.h
+            src/main/jni/breadwallet-core/yescrypt/sysendian.h
+            src/main/jni/breadwallet-core/yescrypt/yescrypt-platform_c.h
+            src/main/jni/breadwallet-core/yescrypt/yescrypt-opt_c.h
+            src/main/jni/breadwallet-core/yescrypt/yescrypt-simd_c.h
              # Core files
              src/main/jni/breadwallet-core/BRAddress.c
              src/main/jni/breadwallet-core/BRAddress.h

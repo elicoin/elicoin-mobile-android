@@ -170,7 +170,7 @@ public class BRAnimator {
             return;
         }
         try {
-            String iso = "BTC";
+            String iso = "ELI";
             if (wm != null) wm.getIso(app);
             fragmentSupport = new FragmentSupport();
             Bundle bundle = new Bundle();

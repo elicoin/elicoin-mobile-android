@@ -50,7 +50,7 @@ public class WalletSettingsConfiguration {
     public WalletSettingsConfiguration(Context context, String iso, List<BigDecimal> limits) {
         mFingerprintLimits = limits;
         mSettingList = new ArrayList<>();
-        if (iso.equalsIgnoreCase("BTC") || iso.equalsIgnoreCase("BCH"))
+        if (iso.equalsIgnoreCase("ELI") || iso.equalsIgnoreCase("BCH"))
             mSettingList.add(new BRSettingsItem("Redeem Private Key", "", new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -62,7 +62,7 @@ public class WalletSettingsConfiguration {
                 }
             }, false, R.drawable.chevron_right_light));
 
-        if (iso.equalsIgnoreCase("BTC") || iso.equalsIgnoreCase("BCH"))
+        if (iso.equalsIgnoreCase("ELI") || iso.equalsIgnoreCase("BCH"))
             mSettingList.add(new BRSettingsItem("Rescan Blockchain", "", new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -76,7 +76,7 @@ public class WalletSettingsConfiguration {
 
         //add that for all currencies
 
-        if (AuthManager.isFingerPrintAvailableAndSetup(context) && (iso.equalsIgnoreCase("BTC") || iso.equalsIgnoreCase("BCH") || iso.equalsIgnoreCase("ETH"))) {
+        if (AuthManager.isFingerPrintAvailableAndSetup(context) && (iso.equalsIgnoreCase("ELI") || iso.equalsIgnoreCase("BCH") || iso.equalsIgnoreCase("ETH"))) {
             mSettingList.add(new BRSettingsItem(context.getString(R.string.Settings_touchIdLimit_android), "", new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -213,11 +213,11 @@ public class BRSQLiteHelper extends SQLiteOpenHelper {
         db.beginTransaction();
         try {
             cursorGet = db.query(BRSQLiteHelper.TX_TABLE_NAME,
-                    BtcBchTransactionDataStore.allColumns, BRSQLiteHelper.TX_ISO + "=? AND " + BRSQLiteHelper.TX_BLOCK_HEIGHT + " <?", new String[]{"BTC", String.valueOf(bCashForkBlockHeight)}, null, null, null);
+                    BtcBchTransactionDataStore.allColumns, BRSQLiteHelper.TX_ISO + "=? AND " + BRSQLiteHelper.TX_BLOCK_HEIGHT + " <?", new String[]{"ELI", String.valueOf(bCashForkBlockHeight)}, null, null, null);
 
             cursorGet.moveToFirst();
             while (!cursorGet.isAfterLast()) {
-                BRTransactionEntity transactionEntity = BtcBchTransactionDataStore.cursorToTransaction(null, "BTC", cursorGet);
+                BRTransactionEntity transactionEntity = BtcBchTransactionDataStore.cursorToTransaction(null, "ELI", cursorGet);
                 transactions.add(transactionEntity);
                 cursorGet.moveToNext();
             }
