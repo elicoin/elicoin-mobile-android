@@ -40,7 +40,7 @@ import com.elicoinwallet.wallet.abstracts.SyncListener;
 import com.elicoinwallet.wallet.configs.WalletSettingsConfiguration;
 import com.elicoinwallet.wallet.configs.WalletUiConfiguration;
 import com.elicoinwallet.wallet.wallets.CryptoTransaction;
-import com.google.firebase.crash.FirebaseCrash;
+//import com.google.firebase.crash.FirebaseCrash;
 
 import com.eliplatform.JsonRpcConstants;
 import com.eliplatform.JsonRpcRequest;
@@ -354,14 +354,14 @@ public class WalletEthManager implements BaseWalletManager, BREthereumLightNode.
                 BRSharedPrefs.putFeeRate(app, getIso(app), fee);
                 BRSharedPrefs.putFeeTime(app, getIso(app), System.currentTimeMillis()); //store the time of the last successful fee fetch
             } else {
-                FirebaseCrash.report(new NullPointerException("Fee is weird:" + fee));
+//                FirebaseCrash.report(new NullPointerException("Fee is weird:" + fee));
                 Log.d(TAG, "Error: Fee is unexpected value");
 
             }
             if (economyFee.compareTo(new BigDecimal(0)) > 0) {
                 BRSharedPrefs.putEconomyFeeRate(app, getIso(app), economyFee);
             } else {
-                FirebaseCrash.report(new NullPointerException("Economy fee is weird:" + economyFee));
+//                FirebaseCrash.report(new NullPointerException("Economy fee is weird:" + economyFee));
                 Log.d(TAG, "Error: Economy fee is unexpected value");
             }
         } catch (JSONException e) {

@@ -61,7 +61,7 @@ import com.elicoinwallet.wallet.abstracts.SyncListener;
 import com.elicoinwallet.wallet.configs.WalletSettingsConfiguration;
 import com.elicoinwallet.wallet.configs.WalletUiConfiguration;
 import com.elicoinwallet.wallet.wallets.CryptoTransaction;
-import com.google.firebase.crash.FirebaseCrash;
+//import com.google.firebase.crash.FirebaseCrash;
 import com.eliplatform.entities.TxMetaData;
 import com.eliplatform.tools.KVStoreManager;
 
@@ -324,12 +324,12 @@ public class WalletBchManager extends BRCoreWalletManager implements BaseWalletM
                 getWallet().setFeePerKb(BRSharedPrefs.getFavorStandardFee(app, getIso(app)) ? fee.longValue() : economyFee.longValue());
                 BRSharedPrefs.putFeeTime(app, getIso(app), System.currentTimeMillis()); //store the time of the last successful fee fetch
             } else {
-                FirebaseCrash.report(new NullPointerException("Fee is weird:" + fee));
+//                FirebaseCrash.report(new NullPointerException("Fee is weird:" + fee));
             }
             if (economyFee.compareTo(new BigDecimal(0)) > 0 && economyFee.compareTo(new BigDecimal(getWallet().getMaxFeePerKb())) < 0) {
                 BRSharedPrefs.putEconomyFeeRate(app, getIso(app), economyFee);
             } else {
-                FirebaseCrash.report(new NullPointerException("Economy fee is weird:" + economyFee));
+//                FirebaseCrash.report(new NullPointerException("Economy fee is weird:" + economyFee));
             }
         } catch (JSONException e) {
             Log.e(TAG, "updateFeePerKb: FAILED: " + jsonString, e);

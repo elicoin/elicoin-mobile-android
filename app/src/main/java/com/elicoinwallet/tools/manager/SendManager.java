@@ -25,7 +25,7 @@ import com.elicoinwallet.wallet.exceptions.FeeOutOfDate;
 import com.elicoinwallet.wallet.exceptions.InsufficientFundsException;
 import com.elicoinwallet.wallet.exceptions.SomethingWentWrong;
 import com.elicoinwallet.wallet.exceptions.SpendingNotAllowed;
-import com.google.firebase.crash.FirebaseCrash;
+//import com.google.firebase.crash.FirebaseCrash;
 
 import java.math.BigDecimal;
 import java.util.Locale;
@@ -101,7 +101,7 @@ public class SendManager {
                     if (!timedOut)
                         tryPay(app, payment, walletManager);
                     else
-                        FirebaseCrash.report(new NullPointerException("did not send, timedOut!"));
+//                        FirebaseCrash.report(new NullPointerException("did not send, timedOut!"));
                     return; //return so no error is shown
                 } catch (InsufficientFundsException ignored) {
                     errTitle[0] = app.getString(R.string.Alerts_sendFailure);
@@ -131,7 +131,7 @@ public class SendManager {
                     return;
                 } catch (FeeOutOfDate ex) {
                     //Fee is out of date, show not connected error
-                    FirebaseCrash.report(ex);
+//                    FirebaseCrash.report(ex);
                     BRExecutor.getInstance().forMainThreadTasks().execute(new Runnable() {
                         @Override
                         public void run() {
@@ -146,7 +146,7 @@ public class SendManager {
                     return;
                 } catch (SomethingWentWrong somethingWentWrong) {
                     somethingWentWrong.printStackTrace();
-                    FirebaseCrash.report(somethingWentWrong);
+//                    FirebaseCrash.report(somethingWentWrong);
                     BRExecutor.getInstance().forMainThreadTasks().execute(new Runnable() {
                         @Override
                         public void run() {

@@ -51,7 +51,7 @@ android {
     flavorDimensions "mode"
 
     productFlavors {
-        brd {
+        eli {
             applicationId = "com.elicoinwallet"
             dimension "mode"
             resValue "string", "app_name", "Elicoin Wallet"
@@ -68,10 +68,10 @@ android {
             }
         }
 
-        brdTestnet {
+        eliTestnet {
             applicationId = "com.elicoinwallet"
             dimension "mode"
-            resValue "string", "app_name", "BRD-testnet"
+            resValue "string", "app_name", "ELI-testnet"
             buildConfigField "boolean", "BITCOIN_TESTNET", "true"
 
             externalNativeBuild {
@@ -149,8 +149,8 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.android.support:cardview-v7:27.1.1'
     implementation 'com.squareup.okhttp3:okhttp:3.7.0'
-    implementation 'com.google.firebase:firebase-core:12.0.1'
-    implementation 'com.google.firebase:firebase-crash:12.0.1'
+//    implementation 'com.google.firebase:firebase-core:12.0.1'
+//    implementation 'com.google.firebase:firebase-crash:12.0.1'
     implementation 'io.sigpipe:jbsdiff:1.0'
     implementation 'com.google.zxing:core:3.3.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'

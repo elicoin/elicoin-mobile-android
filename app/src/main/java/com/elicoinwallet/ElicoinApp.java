@@ -23,7 +23,7 @@ import com.elicoinwallet.tools.util.BRConstants;
 import com.elicoinwallet.tools.util.Utils;
 import com.elicoinwallet.wallet.WalletsMaster;
 import com.elicoinwallet.wallet.abstracts.BaseWalletManager;
-import com.google.firebase.crash.FirebaseCrash;
+//import com.google.firebase.crash.FirebaseCrash;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -105,13 +105,13 @@ public class ElicoinApp extends Application {
 //            HOST = "stage2.breadwallet.com";
             HOST = "ahosslasfasfa.com";
         }
-            BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
-                @Override
-                public void run() {
-                    FirebaseCrash.setCrashCollectionEnabled(false);
-
-                }
-            });
+//            BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
+//                @Override
+//                public void run() {
+//                    FirebaseCrash.setCrashCollectionEnabled(false);
+//
+//                }
+//            });
 
         mContext = this;
 
