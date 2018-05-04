@@ -29,6 +29,9 @@ public class AboutActivity extends BRActivity {
     private ImageView redditShare;
     private ImageView twitterShare;
     private ImageView blogShare;
+    private ImageView webPage;
+    private ImageView blockExplorer;
+    private ImageView github;
     private static AboutActivity app;
     private BRText mCopy;
     private BRText mRewardsId;
@@ -63,33 +66,33 @@ public class AboutActivity extends BRActivity {
 
         infoText.setText(String.format(Locale.getDefault(), getString(R.string.About_footer), verCode));
 
-        redditShare = findViewById(R.id.reddit_share_button);
-        twitterShare = findViewById(R.id.twitter_share_button);
-        blogShare = findViewById(R.id.blog_share_button);
+        blockExplorer = findViewById(R.id.block_explorer);
+        webPage = findViewById(R.id.web_page);
+        github = findViewById(R.id.github);
         mRewardsId = findViewById(R.id.brd_rewards_id);
         mCopy = findViewById(R.id.brd_copy);
 
-        redditShare.setOnClickListener(new View.OnClickListener() {
+        github.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://reddit.com/r/breadwallet/"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/elicoin/elicoin"));
                 startActivity(browserIntent);
                 app.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
             }
         });
 
-        twitterShare.setOnClickListener(new View.OnClickListener() {
+        blockExplorer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/breadapp"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://block.elicoin.net/"));
                 startActivity(browserIntent);
                 app.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
             }
         });
-        blogShare.setOnClickListener(new View.OnClickListener() {
+        webPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://breadapp.com/blog/"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://elicoin.net/"));
                 startActivity(browserIntent);
                 app.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
             }
@@ -97,7 +100,7 @@ public class AboutActivity extends BRActivity {
         policyText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://breadapp.com/privacy-policy"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://elicoin.net/"));
                 startActivity(browserIntent);
                 app.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
             }

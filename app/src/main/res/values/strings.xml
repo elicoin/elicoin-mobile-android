@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
+  <!-- About screen webpage label -->
+  <string name="About.webpage">Web page</string>
+  <!-- About screen webpage label -->
+  <string name="About.blockexplorer">Block explorer</string>
+  <!-- About screen webpage label -->
+  <string name="About.github">Github</string>
   <!-- App name -->
   <string name="About.appName.android">Bread</string>
   <!-- About screen blog label -->
@@ -99,7 +105,7 @@
   <!-- Approve button label -->
   <string name="BitID.approve">Approve</string>
   <!-- <sitename> is requesting authentication using your bitcoin wallet -->
-  <string name="BitID.authenticationRequest">%1$s is requesting authentication using your bitcoin wallet</string>
+  <string name="BitID.authenticationRequest">%1$s is requesting authentication using your Elicoin wallet</string>
   <!-- Deny button label -->
   <string name="BitID.deny">Deny</string>
   <!-- BitID error alert title -->
@@ -171,7 +177,7 @@
   <!-- Retry Identity verification button -->
   <string name="Crowdsale.retry">Retry</string>
   <!-- Bitcoin denomination picker label -->
-  <string name="DefaultCurrency.bitcoinLabel">Bitcoin Display Unit</string>
+  <string name="DefaultCurrency.bitcoinLabel">Elicoin Display Unit</string>
   <!-- Exchange rate label -->
   <string name="DefaultCurrency.rateLabel">Exchange Rate</string>
   <!-- The wallet is disabled. -->
@@ -227,7 +233,7 @@
   <!-- Checking private key balance progress view text -->
   <string name="Import.checking">Checking private key balance...</string>
   <!-- Sweep private key confirmation message -->
-  <string name="Import.confirm">Send %1$s from this private key into your wallet? The bitcoin network will receive a fee of %2$s.</string>
+  <string name="Import.confirm">Send %1$s from this private key into your wallet? The Elicoin network will receive a fee of %2$s.</string>
   <!-- Duplicate key error message -->
   <string name="Import.Error.duplicate">This private key is already in your wallet.</string>
   <!-- empty private key error message -->
@@ -271,9 +277,9 @@
   <!-- Ignore jailbreak warning button -->
   <string name="JailbreakWarnings.ignore">Ignore</string>
   <!-- Jailbreak warning message -->
-  <string name="JailbreakWarnings.messageWithBalance">DEVICE SECURITY COMPROMISED\n Any \'jailbreak\' app can access BRD\'s keychain data and steal your bitcoin! Wipe this wallet immediately and restore on a secure device.</string>
+  <string name="JailbreakWarnings.messageWithBalance">DEVICE SECURITY COMPROMISED\n Any \'jailbreak\' app can access BRD\'s keychain data and steal your elicoin! Wipe this wallet immediately and restore on a secure device.</string>
   <!-- Jailbreak warning message -->
-  <string name="JailbreakWarnings.messageWithoutBalance">DEVICE SECURITY COMPROMISED\n Any \'jailbreak\' app can access BRD\'s keychain data and steal your bitcoin. Please only use BRD on a non-jailbroken device.</string>
+  <string name="JailbreakWarnings.messageWithoutBalance">DEVICE SECURITY COMPROMISED\n Any \'jailbreak\' app can access BRD\'s keychain data and steal your elicoin. Please only use BRD on a non-jailbroken device.</string>
   <!-- Jailbreak warning title -->
   <string name="JailbreakWarnings.title">WARNING</string>
   <!-- Location services disabled error -->
@@ -289,7 +295,7 @@
   <!-- Manage wallet modal title -->
   <string name="ManageWallet.title">Manage Wallet</string>
   <!-- Buy bitcoin title -->
-  <string name="MenuButton.buy">Buy Bitcoin</string>
+  <string name="MenuButton.buy">Buy Elicoin</string>
   <!-- Menu button title -->
   <string name="MenuButton.lock">Lock Wallet</string>
   <!-- Menu button title -->
@@ -323,7 +329,7 @@
   <!-- Node status label -->
   <string name="NodeSelector.statusLabel">Node Connection Status</string>
   <!-- Node Selector view title -->
-  <string name="NodeSelector.title">Bitcoin Nodes</string>
+  <string name="NodeSelector.title">Elicoin Nodes</string>
   <!-- Bad Payment request alert title -->
   <string name="PaymentProtocol.Errors.badPaymentRequest">Bad Payment Request</string>
   <!-- Error opening payment protocol file message -->
@@ -335,9 +341,9 @@
   <!-- Payment too small alert title -->
   <string name="PaymentProtocol.Errors.smallOutputError">Couldn\'t make payment</string>
   <!-- Amount too small error message -->
-  <string name="PaymentProtocol.Errors.smallPayment">Bitcoin payments can\'t be less than %1$s.</string>
+  <string name="PaymentProtocol.Errors.smallPayment">Elicoin payments can\'t be less than %1$s.</string>
   <!-- Output too small error message. -->
-  <string name="PaymentProtocol.Errors.smallTransaction">Bitcoin transaction outputs can\'t be less than %1$s.</string>
+  <string name="PaymentProtocol.Errors.smallTransaction">Elicoin transaction outputs can\'t be less than %1$s.</string>
   <!-- Unsupported signature type payment protocol error message -->
   <string name="PaymentProtocol.Errors.unsupportedSignatureType">unsupported signature type</string>
   <!-- Untrusted certificate payment protocol error message -->
@@ -467,7 +473,7 @@
   <!-- Security Center Info -->
   <string name="SecurityCenter.info">Enable all security features for maximum protection.</string>
   <!-- Paper Key button description -->
-  <string name="SecurityCenter.paperKeyDescription">The only way to access your bitcoin if you lose or upgrade your phone.</string>
+  <string name="SecurityCenter.paperKeyDescription">The only way to access your elicoin if you lose or upgrade your phone.</string>
   <!-- Paper Key button title -->
   <string name="SecurityCenter.paperKeyTitle">Paper Key</string>
   <!-- PIN button description -->
@@ -545,7 +551,7 @@
   <!-- Send money to label -->
   <string name="Send.toLabel">To</string>
   <!-- Adress already used alert message - first part -->
-  <string name="Send.UsedAddress.firstLine">Bitcoin addresses are intended for single use only.</string>
+  <string name="Send.UsedAddress.firstLine">Elicoin addresses are intended for single use only.</string>
   <!-- Adress already used alert message - second part -->
   <string name="Send.UsedAddress.secondLIne">Re-use reduces privacy for both you and the recipient and can result in loss if the recipient doesn\'t directly control the address.</string>
   <!-- Adress already used alert title -->
@@ -615,7 +621,7 @@
   <!-- button label -->
   <string name="StartViewController.createButton">Create New Wallet</string>
   <!-- Start view message -->
-  <string name="StartViewController.message">The easy and secure way to use bitcoin.</string>
+  <string name="StartViewController.message">The easy and secure way to use Elicoin.</string>
   <!-- Recover your wallet from a backup -->
   <string name="StartViewController.recoverButton">Recover Wallet</string>
   <!-- Syncing view connectiong state header text -->
@@ -817,7 +823,7 @@
   <!-- Wallet unlocked message -->
   <string name="UnlockScreen.unlocked">Wallet Unlocked</string>
   <!-- Update PIN caption text -->
-  <string name="UpdatePin.caption">Remember this PIN. If you forget it, you won\'t be able to access your bitcoin.</string>
+  <string name="UpdatePin.caption">Remember this PIN. If you forget it, you won\'t be able to access your Elicoin.</string>
   <!-- PIN creation info. -->
   <string name="UpdatePin.createInstruction">Your PIN will be used to unlock your BRD and send money.</string>
   <!-- Update PIN title -->

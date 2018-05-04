@@ -66,7 +66,7 @@ public class HTTPServer {
 
     private static Set<Middleware> middlewares;
     private static Server server;
-    public static final int PORT = 31120;
+    public static final int PORT = 31320;
     public static final String URL_EA = "http://localhost:" + PORT + "/ea";
     public static final String URL_BUY = "http://localhost:" + PORT + "/buy";
     public static final String URL_SUPPORT = "http://localhost:" + PORT + "/support";
