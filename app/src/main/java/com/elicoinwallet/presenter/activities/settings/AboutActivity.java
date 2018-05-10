@@ -75,7 +75,7 @@ public class AboutActivity extends BRActivity {
         github.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/elicoin/elicoin"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.github_link)));
                 startActivity(browserIntent);
                 app.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
             }
@@ -84,7 +84,7 @@ public class AboutActivity extends BRActivity {
         blockExplorer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://block.elicoin.net/"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.block_explorer_link)));
                 startActivity(browserIntent);
                 app.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
             }
@@ -92,7 +92,7 @@ public class AboutActivity extends BRActivity {
         webPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://elicoin.net/"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.web_page_link)));
                 startActivity(browserIntent);
                 app.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
             }

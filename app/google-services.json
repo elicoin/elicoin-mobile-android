@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "891373976723",
+    "firebase_url": "https://elicoin-wallet.firebaseio.com",
+    "project_id": "elicoin-wallet",
+    "storage_bucket": "elicoin-wallet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:891373976723:android:3ec81db094e273d2",
+        "android_client_info": {
+          "package_name": "com.elicoinwallet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "891373976723-hbo5mav2g4cd5mpclagf4d6utp0v39m7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCz7mfT6hM8Q0O-z5n5vaRsUVS4k-N-jWM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

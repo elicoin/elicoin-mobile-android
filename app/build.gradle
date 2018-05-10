@@ -149,8 +149,7 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.android.support:cardview-v7:27.1.1'
     implementation 'com.squareup.okhttp3:okhttp:3.7.0'
-//    implementation 'com.google.firebase:firebase-core:12.0.1'
-//    implementation 'com.google.firebase:firebase-crash:12.0.1'
+    implementation 'com.google.firebase:firebase-core:12.0.1'
     implementation 'io.sigpipe:jbsdiff:1.0'
     implementation 'com.google.zxing:core:3.3.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
@@ -160,3 +159,4 @@ dependencies {
     implementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'tools.fastlane:screengrab:1.1.0'
 }
+apply plugin: 'com.google.gms.google-services'
