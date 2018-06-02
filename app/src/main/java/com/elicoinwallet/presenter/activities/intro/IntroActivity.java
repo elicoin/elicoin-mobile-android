@@ -12,10 +12,12 @@ import android.widget.ImageButton;
 import com.elicoinwallet.BuildConfig;
 import com.elicoinwallet.R;
 import com.elicoinwallet.presenter.activities.HomeActivity;
+import com.elicoinwallet.presenter.activities.intro.IntroClaimActivity;
 import com.elicoinwallet.presenter.activities.SetPinActivity;
 import com.elicoinwallet.presenter.activities.util.BRActivity;
 import com.elicoinwallet.tools.animation.BRAnimator;
 import com.elicoinwallet.tools.manager.BRReportsManager;
+import com.elicoinwallet.tools.manager.BRSharedPrefs;
 import com.elicoinwallet.tools.security.BRKeyStore;
 import com.elicoinwallet.tools.security.PostAuth;
 import com.elicoinwallet.tools.security.SmartValidator;
@@ -144,6 +146,7 @@ public class IntroActivity extends BRActivity implements Serializable {
         newWalletButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if (!BRAnimator.isClickAllowed()) return;
                 HomeActivity bApp = HomeActivity.getApp();
                 Intent intent = new Intent(IntroActivity.this, SetPinActivity.class);
@@ -172,7 +175,10 @@ public class IntroActivity extends BRActivity implements Serializable {
         super.onResume();
         appVisible = true;
         app = this;
-
+        if(!BRSharedPrefs.wasClaimApproved(this)){
+            Intent intent = new Intent(IntroActivity.this, IntroClaimActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
+  <!-- Intro claim text -->
+  <string name="Intro.claim">CAUTION: This software is in its early development stage and can contain bugs that might cause permanent lose of your coins! Please do not store large amounts of your coins in this wallet. Developers of this wallet are not responsible for any loss or damage caused by this software. User support and warranty are not provided. You are using this software at your own risk. If you do not agree with this statement, please do not use this software and remove it from your device.</string>
+  <!-- Intro claim accept btn-->
+  <string name="Intro.btnAccept">Accept</string>
+  <!-- Intro claim decline btn-->
+  <string name="Intro.btnDecline">Decline</string>
   <!-- About screen webpage label -->
   <string name="About.webpage">Web page</string>
   <!-- About screen webpage label -->

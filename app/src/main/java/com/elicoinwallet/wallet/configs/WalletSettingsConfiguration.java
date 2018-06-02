@@ -50,17 +50,18 @@ public class WalletSettingsConfiguration {
     public WalletSettingsConfiguration(Context context, String iso, List<BigDecimal> limits) {
         mFingerprintLimits = limits;
         mSettingList = new ArrayList<>();
-        if (iso.equalsIgnoreCase("ELI") || iso.equalsIgnoreCase("BCH"))
-            mSettingList.add(new BRSettingsItem("Redeem Private Key", "", new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (!BRAnimator.isClickAllowed()) return;
-                    Activity app = (Activity) v.getContext();
-                    Intent intent = new Intent(app, ImportActivity.class);
-                    app.startActivity(intent);
-                    app.overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
-                }
-            }, false, R.drawable.chevron_right_light));
+        // TODO:  import private key
+//        if (iso.equalsIgnoreCase("ELI") || iso.equalsIgnoreCase("BCH"))
+//            mSettingList.add(new BRSettingsItem("Redeem Private Key", "", new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    if (!BRAnimator.isClickAllowed()) return;
+//                    Activity app = (Activity) v.getContext();
+//                    Intent intent = new Intent(app, ImportActivity.class);
+//                    app.startActivity(intent);
+//                    app.overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
+//                }
+//            }, false, R.drawable.chevron_right_light));
 
         if (iso.equalsIgnoreCase("ELI") || iso.equalsIgnoreCase("BCH"))
             mSettingList.add(new BRSettingsItem("Rescan Blockchain", "", new View.OnClickListener() {

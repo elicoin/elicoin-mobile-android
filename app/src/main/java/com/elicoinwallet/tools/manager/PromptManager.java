@@ -95,7 +95,8 @@ public class PromptManager {
                 BaseWalletManager wallet = WalletsMaster.getInstance(app).getCurrentWallet(app);
                 return wallet != null && BRSharedPrefs.getScanRecommended(app, wallet.getIso(app));
             case SHARE_DATA:
-                return !BRSharedPrefs.getShareData(app) && !BRSharedPrefs.getShareDataDismissed(app);
+                return false;
+//                return !BRSharedPrefs.getShareData(app) && !BRSharedPrefs.getShareDataDismissed(app);
 
         }
         return false;

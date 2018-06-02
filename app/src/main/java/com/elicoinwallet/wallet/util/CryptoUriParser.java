@@ -112,8 +112,9 @@ public class CryptoUriParser {
 
     public static boolean isCryptoUrl(Context app, String url) {
         if (Utils.isNullOrEmpty(url)) return false;
+        // TODO:  import private key
         if (BRCoreKey.isValidBitcoinBIP38Key(url) || BRCoreKey.isValidBitcoinPrivateKey(url))
-            return true;
+            return false;
 
         CryptoRequest requestObject = parseRequest(app, url);
         // return true if the request is valid url and has param: r or param: address

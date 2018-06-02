@@ -148,16 +148,16 @@ public class SettingsActivity extends BRActivity {
 
         items.add(new BRSettingsItem(getString(R.string.Settings_other), "", null, true, 0));
 
-        String shareAddOn = BRSharedPrefs.getShareData(SettingsActivity.this) ? getString(R.string.PushNotifications_on) : getString(R.string.PushNotifications_off);
+//        String shareAddOn = BRSharedPrefs.getShareData(SettingsActivity.this) ? getString(R.string.PushNotifications_on) : getString(R.string.PushNotifications_off);
 
-        items.add(new BRSettingsItem(getString(R.string.Settings_shareData), shareAddOn, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SettingsActivity.this, ShareDataActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
-            }
-        }, false, R.drawable.chevron_right_light));
+//        items.add(new BRSettingsItem(getString(R.string.Settings_shareData), shareAddOn, new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(SettingsActivity.this, ShareDataActivity.class);
+//                startActivity(intent);
+//                overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
+//            }
+//        }, false, R.drawable.chevron_right_light));
 
         items.add(new BRSettingsItem(getString(R.string.Settings_review), "", new View.OnClickListener() {
             @Override

@@ -472,4 +472,18 @@ public class BRSharedPrefs {
         editor.apply();
 
     }
+
+    public static boolean wasClaimApproved(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        return prefs.getBoolean("claimApproved", false);
+
+    }
+
+    public static void putClaimApproved(Context context, boolean wasApproved) {
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("claimApproved", wasApproved);
+        editor.apply();
+
+    }
 }

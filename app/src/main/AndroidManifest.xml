@@ -105,6 +105,10 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
+            android:name="com.elicoinwallet.presenter.activities.intro.IntroClaimActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="com.elicoinwallet.presenter.activities.intro.RecoverActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
