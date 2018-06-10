@@ -71,7 +71,7 @@ public class ElicoinApp extends Application {
     public static int DISPLAY_HEIGHT_PX;
     FingerprintManager mFingerprintManager;
     // host is the server(s) on which the API is hosted
-    public static String HOST = "ahosslasfasfa.com";
+    public static String HOST = "deactivated.com";
     private static List<OnAppBackgrounded> listeners;
     private static Timer isBackgroundChecker;
     public static AtomicInteger activityCounter = new AtomicInteger();
@@ -101,9 +101,9 @@ public class ElicoinApp extends Application {
     public void onCreate() {
         super.onCreate();
         if (Utils.isEmulatorOrDebug(this)) {
-//            BRKeyStore.putFailCount(0, this);
-//            HOST = "stage2.breadwallet.com";
-            HOST = "ahosslasfasfa.com";
+//          BRKeyStore.putFailCount(0, this);
+//          HOST = "stage2.breadwallet.com";
+            HOST = "deactivated.com";
         }
 //            BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
 //                @Override
@@ -147,62 +147,6 @@ public class ElicoinApp extends Application {
 
     }
 
-    public static synchronized String generateWalletId() {
-        if(true){
-            return " ";
-        }
-        // First, get the ETH wallet address
-        BaseWalletManager ethWallet = WalletsMaster.getInstance(mContext).getWalletByIso(mContext, "ETH");
-        String ethAddress = ethWallet.getReceiveAddress(mContext).stringify();
-
-        try {
-            byte[] ptext = ethAddress.getBytes(ISO_8859_1);
-
-            // Encode the address to UTF-8
-            String ethAddressEncoded = URLEncoder.encode(ethAddress, "UTF-8");
-
-            // Remove the first 2 characters
-            ethAddressEncoded = ethAddressEncoded.substring(2, ethAddressEncoded.length());
-
-            // Get the shortened address bytes
-            byte[] addressBytes = ethAddressEncoded.getBytes();
-
-            // Run sha256 on the shortened address bytes
-            byte[] sha256Address = CryptoHelper.sha256(addressBytes);
-
-
-            // Get the first 10 bytes
-            byte[] firstTenBytes = Arrays.copyOfRange(sha256Address, 0, 10);
-
-            Base32 base32 = new Base32();
-            String base32String = base32.encodeOriginal(firstTenBytes);
-            base32String = base32String.toLowerCase();
-
-            StringBuilder builder = new StringBuilder();
-
-            Matcher matcher = Pattern.compile(".{1,4}").matcher(base32String);
-            List<String> result = new ArrayList<>();
-            while (matcher.find()) {
-                String piece = base32String.substring(matcher.start(), matcher.end());
-                result.add(piece);
-                builder.append(piece + " ");
-            }
-
-            // Add the wallet ID to the request headers if it's not null or empty
-            if (builder.toString() != null && !builder.toString().isEmpty()) {
-                mHeaders.put("X-Wallet-ID", builder.toString());
-            }
-
-            return builder.toString();
-
-
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
-        return null;
-
-    }
 
     @TargetApi(Build.VERSION_CODES.N)
     public String getCurrentLocale(Context ctx) {

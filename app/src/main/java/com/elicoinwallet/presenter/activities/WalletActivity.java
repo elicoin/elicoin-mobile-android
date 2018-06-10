@@ -486,11 +486,12 @@ public class WalletActivity extends BRActivity implements InternetManager.Connec
             }
             SyncService.startService(this.getApplicationContext(), SyncService.ACTION_START_SYNC_PROGRESS_POLLING, mCurrentWalletIso);
 
-        } else {
-            if (barFlipper != null)
-                barFlipper.setDisplayedChild(2);
-
         }
+//        Deactivate notification bar with Broken internet connection alert
+//        else {
+//            if (barFlipper != null)
+//                barFlipper.setDisplayedChild(2);
+//        }
     }
 
     @Override

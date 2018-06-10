@@ -295,12 +295,12 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
             }
 
             mAdapter.startObserving();
-        } else {
-            if (mNotificationBar != null)
-                mNotificationBar.setVisibility(View.VISIBLE);
-
         }
-
+//        Deactivate notification bar with Broken internet connection alert
+//        else {
+//            if (mNotificationBar != null) {
+//                mNotificationBar.setVisibility(View.VISIBLE);
+//            }
     }
 
     public void closeNotificationBar() {
