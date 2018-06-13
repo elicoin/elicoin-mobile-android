@@ -481,7 +481,7 @@ public class WalletBitcoinManager extends BRCoreWalletManager implements BaseWal
             case BRConstants.CURRENT_UNIT_BITS:
                 return 2;
             default:
-                return 5;
+                return 8;
         }
     }
 
