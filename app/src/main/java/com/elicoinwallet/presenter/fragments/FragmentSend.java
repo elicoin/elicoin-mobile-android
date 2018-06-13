@@ -213,8 +213,8 @@ public class FragmentSend extends Fragment {
                     amountEdit.setHint("0");
                     amountEdit.setTextSize(24);
                     balanceText.setVisibility(View.VISIBLE);
-                    feeEdit.setVisibility(View.VISIBLE);
-                    feeText.setVisibility(View.VISIBLE);
+//                    feeEdit.setVisibility(View.VISIBLE);
+//                    feeText.setVisibility(View.VISIBLE);
                     isoText.setTextColor(getContext().getColor(R.color.almost_black));
                     isoText.setText(CurrencyUtils.getSymbolByIso(getActivity(), selectedIso));
                     isoText.setTextSize(28);

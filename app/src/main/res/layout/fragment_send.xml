@@ -219,7 +219,7 @@
                 android:layout_marginTop="8dp"
                 android:text="Network Fee"
                 android:textColor="@color/light_gray"
-                android:visibility="invisible"
+                android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="@+id/iso_text"
                 app:layout_constraintTop_toTopOf="parent"/>
 
@@ -254,7 +254,7 @@
                 android:layout_marginBottom="0dp"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/edit"
-                android:visibility="invisible"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/fee_text"
                 app:layout_constraintLeft_toRightOf="@+id/fee_text"
                 />
@@ -382,6 +382,33 @@
             android:layout_height="70dp">
 
             <com.elicoinwallet.presenter.customviews.BREdit
+                android:id="@+id/fee_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:background="@android:color/transparent"
+                android:hint="@string/Send.descriptionFee"
+                android:textSize="@dimen/sub_header"
+                android:inputType="numberDecimal"
+                android:maxLength="10"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/separator4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/extra_light_gray"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
+
+            <com.elicoinwallet.presenter.customviews.BREdit
                 android:id="@+id/comment_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -398,7 +425,7 @@
         </LinearLayout>
 
         <View
-            android:id="@+id/separator4"
+            android:id="@+id/separator5"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/extra_light_gray"
