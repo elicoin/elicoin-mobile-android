@@ -258,7 +258,7 @@ public class SendManager {
             }, null, null, 0);
         } else {
             if (Utils.isNullOrEmpty(item.address)) throw new RuntimeException("can't happen");
-            BigDecimal fee = wm.getEstimatedFee(maxAmountDouble, item.address);
+            BigDecimal fee = wm.getEstimatedFee(maxAmountDouble, item.address, item.fee);
             if (fee.compareTo(new BigDecimal(0)) <= 0) {
                 BRReportsManager.reportBug(new RuntimeException("fee is weird:  " + fee));
                 BRDialog.showCustomDialog(app, app.getString(R.string.Alerts_sendFailure), app.getString(R.string.Send_nilFeeError), app.getString(R.string.Button_ok), null, new BRDialogView.BROnClickListener() {
@@ -378,7 +378,7 @@ public class SendManager {
 
         String iso = BRSharedPrefs.getPreferredFiatIso(ctx);
         BaseWalletManager wallet = WalletsMaster.getInstance(ctx).getCurrentWallet(ctx);
-        BigDecimal feeForTx = walletManager.getEstimatedFee(request.amount, request.address);
+        BigDecimal feeForTx = walletManager.getEstimatedFee(request.amount, request.address, request.fee);
         if (feeForTx.compareTo(new BigDecimal(0)) <= 0) {
             BigDecimal maxAmount = walletManager.getMaxOutputAmount(ctx);
             if (maxAmount != null && maxAmount.compareTo(new BigDecimal(-1)) == 0) {
@@ -395,7 +395,7 @@ public class SendManager {
                 return null;
             }
             if (maxAmount != null) {
-                feeForTx = walletManager.getEstimatedFee(request.amount, request.address);
+                feeForTx = walletManager.getEstimatedFee(request.amount, request.address, request.fee);
                 feeForTx = feeForTx.add(walletManager.getCachedBalance(ctx).subtract(request.amount.abs()));
             }
         }

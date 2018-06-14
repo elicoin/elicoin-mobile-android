@@ -71,7 +71,6 @@ public class CryptoUriParser {
         if (tryBreadUrl(app, url)) return true; //see if it's a bread url
 
         CryptoRequest requestObject = parseRequest(app, url);
-
         if (requestObject == null) {
             if (app != null) {
                 BRDialog.showCustomDialog(app, app.getString(R.string.JailbreakWarnings_title),

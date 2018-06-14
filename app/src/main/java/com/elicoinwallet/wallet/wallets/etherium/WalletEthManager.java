@@ -278,7 +278,7 @@ public class WalletEthManager implements BaseWalletManager, BREthereumLightNode.
     }
 
     @Override
-    public BigDecimal getEstimatedFee(BigDecimal amount, String address) {
+    public BigDecimal getEstimatedFee(BigDecimal amount, String address, BigDecimal setFee) {
         BigDecimal fee;
         if (amount == null) return null;
         if (amount.compareTo(new BigDecimal(0)) == 0) {
@@ -470,7 +470,7 @@ public class WalletEthManager implements BaseWalletManager, BREthereumLightNode.
     }
 
     @Override
-    public BaseTransaction createTransaction(BigDecimal amount, String address) {
+    public BaseTransaction createTransaction(BigDecimal amount, String address, BigDecimal fee) {
         BREthereumTransaction tx = mWallet.createTransaction(address, amount.toPlainString(), BREthereumAmount.Unit.ETHER_WEI);
         return new CryptoTransaction(tx);
     }

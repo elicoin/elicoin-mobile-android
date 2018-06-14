@@ -244,7 +244,7 @@ public class WalletBchManager extends BRCoreWalletManager implements BaseWalletM
     }
 
     @Override
-    public BigDecimal getEstimatedFee(BigDecimal amount, String address) {
+    public BigDecimal getEstimatedFee(BigDecimal amount, String address, BigDecimal setFee) {
         BigDecimal fee;
         if (amount == null) return null;
         if (amount.longValue() == 0) {
@@ -252,7 +252,7 @@ public class WalletBchManager extends BRCoreWalletManager implements BaseWalletM
         } else {
             BaseTransaction tx = null;
             if (isAddressValid(address)) {
-                tx = createTransaction(amount, address);
+                tx = createTransaction(amount, address, new BigDecimal("0"));
             }
 
             if (tx == null) {
@@ -436,12 +436,12 @@ public class WalletBchManager extends BRCoreWalletManager implements BaseWalletM
     }
 
     @Override
-    public BaseTransaction createTransaction(BigDecimal amount, String address) {
+    public BaseTransaction createTransaction(BigDecimal amount, String address, BigDecimal fee) {
         if (Utils.isNullOrEmpty(address)) {
             Log.e(TAG, "createTransaction: can't create, address is null");
             return null;
         }
-        BRCoreTransaction tx = getWallet().createTransaction(amount.longValue(), new BRCoreAddress(address));
+        BRCoreTransaction tx = getWallet().createTransaction(amount.longValue(), new BRCoreAddress(address), fee.longValue());
         return tx == null ? null : new CryptoTransaction(tx);
     }
 

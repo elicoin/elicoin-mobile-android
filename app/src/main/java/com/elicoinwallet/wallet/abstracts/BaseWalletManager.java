@@ -94,7 +94,7 @@ public interface BaseWalletManager {
     BigDecimal getTxFee(BaseTransaction tx);
 
     //get the transaction fee
-    BigDecimal getEstimatedFee(BigDecimal amount, String address);
+    BigDecimal getEstimatedFee(BigDecimal amount, String address, BigDecimal fee);
 
     //get the fee for the transaction size
     BigDecimal getFeeForTransactionSize(BigDecimal size);
@@ -159,7 +159,7 @@ public interface BaseWalletManager {
         //get the wallet's receive address
     BaseAddress getReceiveAddress(Context app);
 
-    BaseTransaction createTransaction(BigDecimal amount, String address);
+    BaseTransaction createTransaction(BigDecimal amount, String address, BigDecimal fee);
 
     //decorate an address to a particular currency, if needed (like BCH address format)
     String decorateAddress(Context app, String addr);

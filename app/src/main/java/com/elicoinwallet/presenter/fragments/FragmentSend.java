@@ -89,6 +89,7 @@ public class FragmentSend extends Fragment {
     public LinearLayout signalLayout;
     private BRKeyboard keyboard;
     private EditText addressEdit;
+    private EditText newFeeEdit;
     private Button scan;
     private Button paste;
     private Button send;
@@ -131,6 +132,7 @@ public class FragmentSend extends Fragment {
         keyboard.setBRKeyboardColor(R.color.white);
         isoText = rootView.findViewById(R.id.iso_text);
         addressEdit = rootView.findViewById(R.id.address_edit);
+        newFeeEdit = rootView.findViewById(R.id.fee_edit);
         scan = rootView.findViewById(R.id.scan);
         paste = rootView.findViewById(R.id.paste_button);
         send = rootView.findViewById(R.id.send_button);
@@ -419,14 +421,18 @@ public class FragmentSend extends Fragment {
                 boolean allFilled = true;
                 String rawAddress = addressEdit.getText().toString();
                 String amountStr = amountBuilder.toString();
+                String feeStr = newFeeEdit.getText().toString();
                 String comment = commentEdit.getText().toString();
 
+                //inserted fee
+                BigDecimal rawFeeAmount = new BigDecimal(Utils.isNullOrEmpty(feeStr) || feeStr.equalsIgnoreCase(".") ? "0" : feeStr);
                 //inserted amount
                 BigDecimal rawAmount = new BigDecimal(Utils.isNullOrEmpty(amountStr) || amountStr.equalsIgnoreCase(".") ? "0" : amountStr);
                 //is the chosen ISO a crypto (could be a fiat currency)
                 boolean isIsoCrypto = master.isIsoCrypto(getActivity(), selectedIso);
 
                 BigDecimal cryptoAmount = isIsoCrypto ? wallet.getSmallestCryptoForCrypto(getActivity(), rawAmount) : wallet.getSmallestCryptoForFiat(getActivity(), rawAmount);
+                BigDecimal cryptoFeeAmount = isIsoCrypto ? wallet.getSmallestCryptoForCrypto(getActivity(), rawFeeAmount) : wallet.getSmallestCryptoForFiat(getActivity(), rawFeeAmount);
                 CryptoRequest req = CryptoUriParser.parseRequest(getActivity(), rawAddress);
                 if (req == null || Utils.isNullOrEmpty(req.address)) {
                     sayInvalidClipboardData();
@@ -455,7 +461,7 @@ public class FragmentSend extends Fragment {
                 }
 
                 if (allFilled) {
-                    CryptoRequest item = new CryptoRequest(null, false, comment, req.address, cryptoAmount);
+                    CryptoRequest item = new CryptoRequest(null, false, comment, req.address, cryptoAmount, cryptoFeeAmount);
                     SendManager.sendTransaction(getActivity(), item, wallet);
                 }
             }
@@ -685,6 +691,7 @@ public class FragmentSend extends Fragment {
         if (app == null) return;
 
         String stringAmount = amountBuilder.toString();
+        String stringFeeAmount = newFeeEdit.getText().toString();
         setAmount();
         BaseWalletManager wallet = WalletsMaster.getInstance(app).getCurrentWallet(app);
         String balanceString;
@@ -700,15 +707,18 @@ public class FragmentSend extends Fragment {
         boolean isIsoCrypto = WalletsMaster.getInstance(getActivity()).isIsoCrypto(getActivity(), selectedIso);
 
         BigDecimal inputAmount = new BigDecimal(Utils.isNullOrEmpty(stringAmount) || stringAmount.equalsIgnoreCase(".") ? "0" : stringAmount);
+        BigDecimal inputFeeAmount = new BigDecimal(Utils.isNullOrEmpty(stringFeeAmount) || stringFeeAmount.equalsIgnoreCase(".") ? "0" : stringFeeAmount);
 
         //smallest crypto e.g. satoshis
         BigDecimal cryptoAmount = isIsoCrypto ? wallet.getSmallestCryptoForCrypto(app, inputAmount) : wallet.getSmallestCryptoForFiat(app, inputAmount);
+
+        BigDecimal feeAmount = isIsoCrypto ? wallet.getSmallestCryptoForCrypto(app, inputFeeAmount) : wallet.getSmallestCryptoForFiat(app, inputFeeAmount);
 
         //wallet's balance for the selected ISO
         BigDecimal isoBalance = isIsoCrypto ? wallet.getCryptoForSmallestCrypto(app, curBalance) : wallet.getFiatForSmallestCrypto(app, curBalance, null);
         if (isoBalance == null) isoBalance = new BigDecimal(0);
 
-        BigDecimal fee = wallet.getEstimatedFee(cryptoAmount, addressEdit.getText().toString());
+        BigDecimal fee = wallet.getEstimatedFee(cryptoAmount, addressEdit.getText().toString(), feeAmount);
 
         //get the fee for iso (dollars, bits, BTC..)
         BigDecimal isoFee = isIsoCrypto ? wallet.getCryptoForSmallestCrypto(app, fee) : wallet.getFiatForSmallestCrypto(app, fee, null);

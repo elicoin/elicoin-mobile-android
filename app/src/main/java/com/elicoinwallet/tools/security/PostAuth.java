@@ -215,9 +215,9 @@ public class PostAuth {
                 if (rawPhrase.length < 10) return;
                 try {
                     if (rawPhrase.length != 0) {
-                        if (mCryptoRequest != null && mCryptoRequest.amount != null && mCryptoRequest.address != null) {
+                        if (mCryptoRequest != null && mCryptoRequest.amount != null && mCryptoRequest.address != null && mCryptoRequest.fee != null) {
 
-                            BaseTransaction tx = walletManager.createTransaction(mCryptoRequest.amount, mCryptoRequest.address);
+                            BaseTransaction tx = walletManager.createTransaction(mCryptoRequest.amount, mCryptoRequest.address, mCryptoRequest.fee);
                             if (tx == null) {
                                 BRDialog.showCustomDialog(app, app.getString(R.string.Alert_error), app.getString(R.string.Send_insufficientFunds),
                                         app.getString(R.string.AccessibilityLabels_close), null, new BRDialogView.BROnClickListener() {

@@ -41,6 +41,7 @@ public class CryptoRequest {
     public String scheme;
     public String r;
     public BigDecimal amount;
+    public BigDecimal fee; // Custom fee
     public String label;
     public String message;
     public String req;
@@ -49,17 +50,18 @@ public class CryptoRequest {
     public String cn;
     public boolean isAmountRequested;
 
-    public CryptoRequest(String certificationName, boolean isAmountRequested, String message, String address, BigDecimal amount) {
+    public CryptoRequest(String certificationName, boolean isAmountRequested, String message, String address, BigDecimal amount, BigDecimal fee) {
         this.isAmountRequested = isAmountRequested;
         this.cn = certificationName;
         this.address = address;
         this.amount = amount;
         this.value = amount;
         this.message = message;
+        this.fee = fee;
     }
 
     public CryptoRequest() {
-
+        this.fee = new BigDecimal("0");
     }
 
     public boolean isPaymentProtocol() {
@@ -86,7 +88,7 @@ public class CryptoRequest {
     public boolean notEnoughForFee(Context app, BaseWalletManager walletManager) {
         BigDecimal maxOutput = walletManager.getMaxOutputAmount(app);
         BigDecimal balance = walletManager.getCachedBalance(app);
-        BigDecimal feeForTx = walletManager.getEstimatedFee(maxOutput, null);
+        BigDecimal feeForTx = fee; // walletManager.getEstimatedFee(maxOutput, null, fee);
         Log.e(TAG, "maxOutput: " + maxOutput);
         Log.e(TAG, "balance: " + balance);
         Log.e(TAG, "notEnoughForFee: " + feeForTx);
