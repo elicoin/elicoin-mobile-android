@@ -142,7 +142,8 @@ public class FingerprintActivity extends BRActivity {
         BaseWalletManager wm = WalletsMaster.getInstance(this).getCurrentWallet(this);
         BigDecimal cryptoLimit = BRKeyStore.getSpendLimit(this, wm.getIso(this));
         //amount in smallest crypto amount (satoshis, wei)
-        BigDecimal amount = wm.getFiatForSmallestCrypto(this, cryptoLimit, null);
+//        BigDecimal amount = wm.getFiatForSmallestCrypto(this, cryptoLimit, null);
+        BigDecimal amount = cryptoLimit;
         //amount in user preferred ISO (e.g. USD)
         BigDecimal curAmount = wm.getFiatForSmallestCrypto(this, cryptoLimit, null);
         //formatted string for the label

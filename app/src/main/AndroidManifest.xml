@@ -52,6 +52,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="stateVisible|adjustResize">
+        <meta-data
+            android:name="com.bugsnag.android.API_KEY"
+            android:value="3b1c40cc959810a9b969e7d11394c5f0"/>
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.elicoinwallet"

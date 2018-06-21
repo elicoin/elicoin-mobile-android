@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
 
+import com.bugsnag.android.Bugsnag;
 import com.elicoinwallet.presenter.activities.util.BRActivity;
 import com.elicoinwallet.tools.crypto.Base32;
 import com.elicoinwallet.tools.crypto.CryptoHelper;
@@ -24,6 +25,8 @@ import com.elicoinwallet.tools.util.Utils;
 import com.elicoinwallet.wallet.WalletsMaster;
 import com.elicoinwallet.wallet.abstracts.BaseWalletManager;
 //import com.google.firebase.crash.FirebaseCrash;
+//import com.google.firebase.crash.FirebaseCrash;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -97,6 +100,8 @@ public class ElicoinApp extends Application {
 
     private static Activity currentActivity;
 
+    private static FirebaseAnalytics mFirebaseAnalytics;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -105,6 +110,8 @@ public class ElicoinApp extends Application {
 //          HOST = "stage2.breadwallet.com";
             HOST = "deactivated.com";
         }
+
+        Bugsnag.init(this);
 //            BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
 //                @Override
 //                public void run() {
@@ -114,6 +121,11 @@ public class ElicoinApp extends Application {
 //            });
 
         mContext = this;
+
+        // [START shared_app_measurement]
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        // [END shared_app_measurement]
 
         if (!Utils.isEmulatorOrDebug(this) && IS_ALPHA)
             throw new RuntimeException("can't be alpha for release");
@@ -160,6 +172,10 @@ public class ElicoinApp extends Application {
 
     public static Map<String, String> getBreadHeaders() {
         return mHeaders;
+    }
+
+    public static FirebaseAnalytics getFirebaseInstance() {
+        return mFirebaseAnalytics;
     }
 
     public static Context getBreadContext() {

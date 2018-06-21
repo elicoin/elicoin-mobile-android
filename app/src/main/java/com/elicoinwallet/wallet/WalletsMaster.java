@@ -224,7 +224,8 @@ public class WalletsMaster {
      */
     public boolean isPasscodeEnabled(Context ctx) {
         KeyguardManager keyguardManager = (KeyguardManager) ctx.getSystemService(Activity.KEYGUARD_SERVICE);
-        return keyguardManager.isKeyguardSecure();
+//        return keyguardManager.isKeyguardSecure();
+        return true;
     }
 
     public boolean isNetworkAvailable(Context ctx) {
@@ -263,7 +264,11 @@ public class WalletsMaster {
     public void initWallets(final Context app) {
         if (!mWallets.contains(WalletBitcoinManager.getInstance(app)))
             mWallets.add(WalletBitcoinManager.getInstance(app));
-//        if (!mWallets.contains(WalletBchManager.getInstance(app)))
+        for (BaseWalletManager wm : mWallets) {
+            if (wm != null) setSpendingLimitIfNotSet(app, wm);
+        }
+//                }
+        //        if (!mWallets.contains(WalletBchManager.getInstance(app)))
 //            mWallets.add(WalletBchManager.getInstance(app));
 //        if (!mWallets.contains(WalletEthManager.getInstance(app))) {
 //            BaseWalletManager ethWallet = WalletEthManager.getInstance(app);
@@ -271,9 +276,7 @@ public class WalletsMaster {
 //
 //            if (ethWallet != null) {
 //                ElicoinApp.generateWalletId();
-//                for (BaseWalletManager wm : mWallets) {
-//                    if (wm != null) setSpendingLimitIfNotSet(app, wm);
-//                }
+
 //            }
 //        }
     }

@@ -39,6 +39,7 @@ import com.elicoinwallet.tools.util.Utils;
 import com.elicoinwallet.wallet.WalletsMaster;
 import com.elicoinwallet.wallet.abstracts.BaseWalletManager;
 import com.eliplatform.APIClient;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 
 import java.util.List;
@@ -186,7 +187,7 @@ public class LoginActivity extends BRActivity {
         });
 
         final boolean useFingerprint = AuthManager.isFingerPrintAvailableAndSetup(this) && BRSharedPrefs.getUseFingerprint(this);
-//        Log.e(TAG, "onCreate: isFingerPrintAvailableAndSetup: " + useFingerprint);
+        Log.e(TAG, "onCreate: isFingerPrintAvailableAndSetup: " + useFingerprint);
         fingerPrint.setVisibility(useFingerprint ? View.VISIBLE : View.GONE);
 
         if (useFingerprint)
@@ -196,7 +197,10 @@ public class LoginActivity extends BRActivity {
                     AuthManager.getInstance().authPrompt(LoginActivity.this, "", "", false, true, new BRAuthCompletion() {
                         @Override
                         public void onComplete() {
-//                            AuthManager.getInstance().authSuccess(LoginActivity.this);
+                            AuthManager.getInstance().authSuccess(LoginActivity.this);
+                            Bundle params = new Bundle();
+                            params.putString(FirebaseAnalytics.Param.METHOD, "fingerprint");
+                            ElicoinApp.getFirebaseInstance().logEvent(FirebaseAnalytics.Event.LOGIN,params);
                             unlockWallet();
                         }
 
@@ -353,6 +357,9 @@ public class LoginActivity extends BRActivity {
                         inputAllowed = false;
                         if (AuthManager.getInstance().checkAuth(pin.toString(), LoginActivity.this)) {
                             AuthManager.getInstance().authSuccess(LoginActivity.this);
+                            Bundle params = new Bundle();
+                            params.putString(FirebaseAnalytics.Param.METHOD, "pin");
+                            ElicoinApp.getFirebaseInstance().logEvent(FirebaseAnalytics.Event.LOGIN,params);
                             unlockWallet();
                         } else {
                             AuthManager.getInstance().authFail(LoginActivity.this);
@@ -365,17 +372,21 @@ public class LoginActivity extends BRActivity {
     private void setUpOfflineButtons() {
         int activeColor = getColor(white);
         GradientDrawable leftDrawable = (GradientDrawable) leftButton.getBackground().getCurrent();
+        GradientDrawable midDrawable = (GradientDrawable) midButton.getBackground().getCurrent();
         GradientDrawable rightDrawable = (GradientDrawable) rightButton.getBackground().getCurrent();
 
         int rad = Utils.getPixelsFromDps(this, (int) getResources().getDimension(R.dimen.radius) / 2);
-        int stoke = 2;
+        int stoke = 3;
 
         leftDrawable.setCornerRadii(new float[]{rad, rad, 0, 0, 0, 0, rad, rad});
         rightDrawable.setCornerRadii(new float[]{0, 0, rad, rad, rad, rad, 0, 0});
+        midDrawable.setCornerRadii(new float[]{0, 0, 0, 0, 0, 0, 0, 0});
 
         leftDrawable.setStroke(stoke, activeColor, 0, 0);
         rightDrawable.setStroke(stoke, activeColor, 0, 0);
+        midDrawable.setStroke(stoke, activeColor, 0, 0);
         leftButton.setTextColor(activeColor);
+        midButton.setTextColor(activeColor);
         rightButton.setTextColor(activeColor);
     }
 

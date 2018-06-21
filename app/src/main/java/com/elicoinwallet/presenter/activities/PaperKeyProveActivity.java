@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.elicoinwallet.ElicoinApp;
 import com.elicoinwallet.R;
 import com.elicoinwallet.presenter.activities.util.BRActivity;
 import com.elicoinwallet.presenter.customviews.BRDialogView;
@@ -29,6 +30,8 @@ import com.elicoinwallet.tools.manager.BRSharedPrefs;
 import com.elicoinwallet.tools.security.SmartValidator;
 import com.elicoinwallet.tools.util.Utils;
 import com.elicoinwallet.tools.util.Bip39Reader;
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import java.util.Locale;
 import java.util.Random;
 
@@ -106,6 +109,10 @@ public class PaperKeyProveActivity extends BRActivity {
                 if (!BRAnimator.isClickAllowed()) return;
 
                 if (isWordCorrect(true) && isWordCorrect(false)) {
+                    Bundle params = new Bundle();
+                    params.putString(FirebaseAnalytics.Param.LEVEL, "1");
+                    params.putString(FirebaseAnalytics.Param.CHARACTER, "paper_key_saved");
+                    ElicoinApp.getFirebaseInstance().logEvent(FirebaseAnalytics.Event.LEVEL_UP,params);
                     Utils.hideKeyboard(PaperKeyProveActivity.this);
                     BRSharedPrefs.putPhraseWroteDown(PaperKeyProveActivity.this, true);
                     BRAnimator.showBreadSignal(PaperKeyProveActivity.this, getString(R.string.Alerts_paperKeySet), getString(R.string.Alerts_paperKeySetSubheader), R.drawable.ic_check_mark_white, new BROnSignalCompletion() {

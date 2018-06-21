@@ -811,7 +811,7 @@
   <!-- Unlock with FaceID accessibility label -->
   <string name="UnlockScreen.faceIdText">Unlock with FaceID</string>
   <!-- My Address button title -->
-  <string name="UnlockScreen.myAddress">My Address</string>
+  <string name="UnlockScreen.myAddress">Receive</string>
   <!-- Reset PIN with Paper Key button label. -->
   <string name="UnlockScreen.resetPin">Reset PIN</string>
   <!-- Scan button title -->

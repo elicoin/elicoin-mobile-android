@@ -202,7 +202,8 @@ public class AuthManager {
         FragmentFingerprint fingerprintFragment;
         FragmentPin breadPin;
 
-        if (keyguardManager.isKeyguardSecure()) {
+//        if (keyguardManager.isKeyguardSecure()) {
+        if (true) {
             if (useFingerPrint) {
                 fingerprintFragment = new FragmentFingerprint();
                 Bundle args = new Bundle();
@@ -253,8 +254,8 @@ public class AuthManager {
     }
 
     public static boolean isFingerPrintAvailableAndSetup(Context context) {
-        return false;
-        //return Utils.isFingerprintAvailable(context) && Utils.isFingerprintEnrolled(context);
+//        return false;
+        return Utils.isFingerprintAvailable(context) && Utils.isFingerprintEnrolled(context);
     }
 
     public interface OnPinSuccess {
