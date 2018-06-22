@@ -167,20 +167,22 @@ public class Utils {
     }
 
     public static boolean isFingerprintEnrolled(Context app) {
-        FingerprintManager fingerprintManager = (FingerprintManager) app.getSystemService(FINGERPRINT_SERVICE);
-        // Device doesn't support fingerprint authentication
-        return ActivityCompat.checkSelfPermission(app, Manifest.permission.USE_FINGERPRINT) == PackageManager.PERMISSION_GRANTED && fingerprintManager.isHardwareDetected() && fingerprintManager.hasEnrolledFingerprints();
+        return false;
+//        FingerprintManager fingerprintManager = (FingerprintManager) app.getSystemService(FINGERPRINT_SERVICE);
+//        // Device doesn't support fingerprint authentication
+//        return ActivityCompat.checkSelfPermission(app, Manifest.permission.USE_FINGERPRINT) == PackageManager.PERMISSION_GRANTED && fingerprintManager.isHardwareDetected() && fingerprintManager.hasEnrolledFingerprints();
     }
 
     public static boolean isFingerprintAvailable(Context app) {
-        FingerprintManager fingerprintManager = (FingerprintManager) app.getSystemService(FINGERPRINT_SERVICE);
-        if (fingerprintManager == null) return false;
-        // Device doesn't support fingerprint authentication
-        if (ActivityCompat.checkSelfPermission(app, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(app, "Fingerprint authentication permission not enabled", Toast.LENGTH_LONG).show();
-            return false;
-        }
-        return fingerprintManager.isHardwareDetected();
+        return false;
+//        FingerprintManager fingerprintManager = (FingerprintManager) app.getSystemService(FINGERPRINT_SERVICE);
+//        if (fingerprintManager == null) return false;
+//        // Device doesn't support fingerprint authentication
+//        if (ActivityCompat.checkSelfPermission(app, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED) {
+//            Toast.makeText(app, "Fingerprint authentication permission not enabled", Toast.LENGTH_LONG).show();
+//            return false;
+//        }
+//        return fingerprintManager.isHardwareDetected();
     }
 
     public static void hideKeyboard(Context app) {
