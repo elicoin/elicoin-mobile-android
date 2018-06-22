@@ -256,7 +256,7 @@ public class BRSharedPrefs {
     //if the user prefers all in crypto units, not fiat currencies
     public static boolean isCryptoPreferred(Context activity) {
         SharedPreferences prefs = activity.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        return prefs.getBoolean("priceInCrypto", false);
+        return prefs.getBoolean("priceInCrypto", true);
     }
 
     //if the user prefers all in crypto units, not fiat currencies
