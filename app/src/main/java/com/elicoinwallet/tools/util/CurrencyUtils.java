@@ -73,11 +73,7 @@ public class CurrencyUtils {
                 e.printStackTrace();
             }
         }
-        if (iso.equals("ELI") || iso.equals("EUR") || iso.equals("CZK")) {
-            decimalFormatSymbols.setCurrencySymbol("");
-        } else {
-            decimalFormatSymbols.setCurrencySymbol(symbol);
-        }
+        decimalFormatSymbols.setCurrencySymbol("");
 //        currencyFormat.setMaximumFractionDigits(decimalPoints);
         currencyFormat.setGroupingUsed(true);
         currencyFormat.setMaximumFractionDigits(currency != null ? currency.getDefaultFractionDigits() : wallet.getMaxDecimalPlaces(app));
@@ -86,16 +82,16 @@ public class CurrencyUtils {
         currencyFormat.setNegativePrefix(decimalFormatSymbols.getCurrencySymbol() + "-");
         currencyFormat.setNegativeSuffix("");
         String retval = currencyFormat.format(amount);
-        if (iso.equals("ELI") || iso.equals("EUR") || iso.equals("CZK")) {
-            if (retval.length() > 0) {
-                char a = retval.charAt(retval.length() - 1);
-                if (a == 160) {
-                    return retval + symbol;
-                } else {
-                    return retval + " " + symbol;
-                }
+
+        if (retval.length() > 0) {
+            char a = retval.charAt(retval.length() - 1);
+            if (a == 160) {
+                return retval + iso;
+            } else {
+                return retval + " " + iso;
             }
         }
+
         return retval;
     }
 
