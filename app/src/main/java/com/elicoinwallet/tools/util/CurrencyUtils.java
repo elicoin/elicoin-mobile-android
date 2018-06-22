@@ -73,7 +73,7 @@ public class CurrencyUtils {
                 e.printStackTrace();
             }
         }
-        if (iso == "ELI") {
+        if (iso.equals("ELI") || iso.equals("EUR") || iso.equals("CZK")) {
             decimalFormatSymbols.setCurrencySymbol("");
         } else {
             decimalFormatSymbols.setCurrencySymbol(symbol);
@@ -86,9 +86,9 @@ public class CurrencyUtils {
         currencyFormat.setNegativePrefix(decimalFormatSymbols.getCurrencySymbol() + "-");
         currencyFormat.setNegativeSuffix("");
         String retval = currencyFormat.format(amount);
-        if (iso == "ELI") {
-            if(retval.length() > 0){
-                char a = retval.charAt(retval.length()-1);
+        if (iso.equals("ELI") || iso.equals("EUR") || iso.equals("CZK")) {
+            if (retval.length() > 0) {
+                char a = retval.charAt(retval.length() - 1);
                 if (a == 160) {
                     return retval + symbol;
                 } else {
