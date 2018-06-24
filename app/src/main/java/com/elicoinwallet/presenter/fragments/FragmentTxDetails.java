@@ -282,9 +282,13 @@ public class FragmentTxDetails extends DialogFragment {
             }
 
             mTxAction.setText(!received ? getString(R.string.TransactionDetails_titleSent) : getString(R.string.TransactionDetails_titleReceived));
-            mToFrom.setText(!received ? getString(R.string.Confirmation_to) + " " : getString(R.string.TransactionDetails_addressViaHeader) + " ");
+            mToFrom.setText(!received ? getString(R.string.Confirmation_to) + " " : getString(R.string.TransactionDetails_addressFromHeader) + " ");
 
-            mToFromAddress.setText(walletManager.decorateAddress(app, mTransaction.getTo())); //showing only the destination address
+            if (received) {
+                mToFromAddress.setText(walletManager.decorateAddress(app, mTransaction.getFrom())); //showing the origin address
+            } else {
+                mToFromAddress.setText(walletManager.decorateAddress(app, mTransaction.getTo())); //showing the destination address
+            }
 
             // Allow the to/from address to be copyable
             mToFromAddress.setOnClickListener(new View.OnClickListener() {

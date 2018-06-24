@@ -26,6 +26,9 @@
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
 
     <uses-feature
+        android:name="android.hardware.fingerprint"
+        android:required="false"/>
+    <uses-feature
         android:name="android.hardware.location.gps"
         android:required="false" />
     <uses-feature

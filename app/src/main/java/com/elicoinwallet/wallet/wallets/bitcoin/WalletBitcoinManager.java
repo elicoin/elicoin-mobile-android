@@ -190,11 +190,12 @@ public class WalletBitcoinManager extends BRCoreWalletManager implements BaseWal
 
     private List<BigDecimal> getFingerprintLimits(Context app) {
         List<BigDecimal> result = new ArrayList<>();
-        result.add(new BigDecimal(ONE_BITCOIN).divide(new BigDecimal(1000), getMaxDecimalPlaces(app), BRConstants.ROUNDING_MODE));
-        result.add(new BigDecimal(ONE_BITCOIN).divide(new BigDecimal(100), getMaxDecimalPlaces(app), BRConstants.ROUNDING_MODE));
-        result.add(new BigDecimal(ONE_BITCOIN).divide(new BigDecimal(10), getMaxDecimalPlaces(app), BRConstants.ROUNDING_MODE));
-        result.add(new BigDecimal(ONE_BITCOIN));
         result.add(new BigDecimal(ONE_BITCOIN).multiply(new BigDecimal(10)));
+        result.add(new BigDecimal(ONE_BITCOIN).multiply(new BigDecimal(100)));
+        result.add(new BigDecimal(ONE_BITCOIN).multiply(new BigDecimal(500)));
+        result.add(new BigDecimal(ONE_BITCOIN).multiply(new BigDecimal(1000)));
+        result.add(new BigDecimal(ONE_BITCOIN).multiply(new BigDecimal(5000)));
+        result.add(new BigDecimal(ONE_BITCOIN).multiply(new BigDecimal(10000)));
         return result;
     }
 
@@ -202,7 +203,7 @@ public class WalletBitcoinManager extends BRCoreWalletManager implements BaseWal
         Context app = ElicoinApp.getBreadContext();
         if (0 == createWalletAllowedRetries) {
             // The app is dead - tell the user...
-            BRDialog.showSimpleDialog(app, "Wallet error!", "please contact support@breadwallet.com");
+            BRDialog.showSimpleDialog(app, "Wallet error!", "please contact info@elicoin.net");
             // ... for now just this.  App crashes after this
             return null;
         }
