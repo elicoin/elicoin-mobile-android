@@ -257,16 +257,6 @@ public class WalletActivity extends BRActivity implements InternetManager.Connec
                     app.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
                 }
             });
-//            mBuyButton.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent intent = new Intent(WalletActivity.this, WebViewActivity.class);
-//                    intent.putExtra("url", HTTPServer.URL_BUY);
-//                    Activity app = WalletActivity.this;
-//                    app.startActivity(intent);
-//                    app.overridePendingTransition(R.anim.enter_from_bottom, R.anim.fade_down);
-//                }
-//            });
 
         } else {
             LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
