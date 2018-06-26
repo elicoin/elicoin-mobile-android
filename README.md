@@ -1,11 +1,8 @@
 ![ƀ](/images/icon.png) Elicoin wallet for Android
 ----------------------------------
 
-### Elicoin done right
 
-This is the Android port of the breadwallet iOS app, which can be found [here](https://github.com/elicoin/elicoin-mobile-android/).
-
-### a completely standalone elicoin wallet
+### Elicoin done right - a completely standalone elicoin wallet
 
 Unlike many other elicoin wallets, breadwallet is a real standalone elicoin client. There is no server to get hacked or go down, so you can always access your money. Using [SPV](https://en.bitcoin.it/wiki/Thin_Client_Security#Header-Only_Clients) mode, Elicoin Wallet connects directly to the elicoin network with the fast performance you need on a mobile device.
 
