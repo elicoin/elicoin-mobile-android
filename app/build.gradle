@@ -1,16 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
-    signingConfigs {
-        config {
-            keyAlias 'key0'
-            keyPassword '123456'
-            storeFile file('/home/dude/Otherdisc/home/dude/Keys/key.jks')
-            storePassword '123456'
-        }
-        config1 {
-        }
-    }
+//    signingConfigs {
+//        config {
+//            keyAlias 'key0'
+//            keyPassword '123456'
+//            storeFile file('/home/dude/Otherdisc/home/dude/Keys/key.jks')
+//            storePassword '123456'
+//        }
+//        config1 {
+//        }
+//    }
     compileSdkVersion = 27
     buildToolsVersion = '27.0.3'
     defaultConfig {
@@ -34,7 +34,7 @@ android {
                 arguments '-DANDROID_TOOLCHAIN=clang', '-DANDROID_STL=gnustl_static'
             }
         }
-        signingConfig signingConfigs.config
+//        signingConfig signingConfigs.config
     }
     testOptions {
         unitTests.returnDefaultValues = true
