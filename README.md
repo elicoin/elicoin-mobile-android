@@ -1,4 +1,4 @@
-![ƀ](/images/icon.png) breadwallet for Android
+![ƀ](/images/icon.png) Elicoin wallet for Android
 ----------------------------------
 
 ### Elicoin done right
