@@ -3,4 +3,4 @@
 	url = https://github.com/bitcoin-core/secp256k1.git
 [submodule "core"]
 	path = app/src/main/jni/breadwallet-core
-	url = git@bitbucket.org:niedoluk/elicoinwallet-core.git
+	url = https://github.com/elicoin/elicoin-mobile-core.git
