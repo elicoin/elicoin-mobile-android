@@ -1,7 +1,7 @@
 Privacy Policy
 Effective date: May 22, 2018
 
-Mediasun Group s.r.o. ("us", "we", or "our") operates the elicoin.net website and the Elicoin Wallet mobile application (the "Service").
+Elicoin developers ("us", "we", or "our") operates the elicoin.net website and the Elicoin Wallet mobile application (the "Service").
 
 This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.
 
