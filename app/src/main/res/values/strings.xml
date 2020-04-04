@@ -1,65 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
   <!-- Intro claim text -->
-  <string name="Intro.claim">CAUTION: This software is in its early development stage and can contain bugs that might cause permanent lose of your coins! Please do not store large amounts of your coins in this wallet. Developers of this wallet are not responsible for any loss or damage caused by this software. User support and warranty are not provided. You are using this software at your own risk. If you do not agree with this statement, please do not use this software and remove it from your device.</string>
+  <string name="Intro.claim">주의 : 이 소프트웨어는 초기 개발 단계 입니다. 오류가 있을 수 있으니 참고하여 사용해 주시기 바랍니다.</string>
   <!-- Intro claim accept btn-->
-  <string name="Intro.btnAccept">Accept</string>
+  <string name="Intro.btnAccept">수락</string>
   <!-- Intro claim decline btn-->
-  <string name="Intro.btnDecline">Decline</string>
+  <string name="Intro.btnDecline">거절</string>
   <!-- About screen webpage label -->
-  <string name="About.webpage">Web page</string>
+  <string name="About.webpage">웹페이지</string>
   <!-- About screen webpage label -->
-  <string name="About.blockexplorer">Block explorer</string>
+  <string name="About.blockexplorer">블록 탐색기</string>
   <!-- About screen webpage label -->
-  <string name="About.github">Github</string>
+  <string name="About.github">깃허브</string>
   <!-- App name -->
-  <string name="About.appName.android">Bread</string>
+  <string name="About.appName.android">엘리</string>
   <!-- About screen blog label -->
-  <string name="About.blog">Blog</string>
+  <string name="About.blog">블로그</string>
   <!-- About screen footer -->
-  <string name="About.footer">Made by the global Elicoin wallet team. Version %1$s</string>
+  <string name="About.footer">글로벌 엘리코인 팀 제작. %1$s</string>
   <!-- Privay Policy button label -->
-  <string name="About.privacy">Privacy Policy</string>
+  <string name="About.privacy">개인정보 보호정책</string>
   <!-- About screen reddit label -->
-  <string name="About.reddit">Reddit</string>
+  <string name="About.reddit">레딧</string>
   <!-- Terms of Use button label -->
-  <string name="About.terms">Terms of Use</string>
+  <string name="About.terms">이용 약관</string>
   <!-- About screen title -->
-  <string name="About.title">About</string>
+  <string name="About.title">관련 사항</string>
   <!-- About screen twitter label -->
-  <string name="About.twitter">Twitter</string>
+  <string name="About.twitter">트위터</string>
   <!-- About screen wallet ID label -->
-  <string name="About.walletID">Elicoin wallet Rewards ID</string>
+  <string name="About.walletID">엘리코인 지갑 리워드 아이디</string>
   <!-- Close modal button accessibility label -->
-  <string name="AccessibilityLabels.close">Close</string>
+  <string name="AccessibilityLabels.close">닫기</string>
   <!-- Support center accessibiliy label -->
-  <string name="AccessibilityLabels.faq">Support Center</string>
+  <string name="AccessibilityLabels.faq">지원 센터</string>
   <!-- Account balance -->
-  <string name="Account.balance">Balance</string>
+  <string name="Account.balance">잔액</string>
   <!-- $10000 per BTC -->
-  <string name="Account.exchangeRate">%1$s per %2$s</string>
+  <string name="Account.exchangeRate">%1$s 당 %2$s</string>
   <!-- Loading Wallet Message -->
-  <string name="Account.loadingMessage">Loading Wallet</string>
+  <string name="Account.loadingMessage">지갑 로딩</string>
   <!-- Default wallet name -->
-  <string name="AccountHeader.defaultWalletName">My Elicoin wallet</string>
+  <string name="AccountHeader.defaultWalletName">나의 엘리코인 지갑</string>
   <!-- Third party keyboard warning -->
-  <string name="Alert.customKeyboard.android">It looks like you are using a third-party keyboard, which can record what you type and steal your Paper Key. Please switch to the default Android keyboard for extra protection.</string>
+  <string name="Alert.customKeyboard.android">제3자가 제공한 키보드를 사용하고 계신 것 같습니다, 귀하의 입력을 기록하고 귀하의 페이퍼 키가 도난 당할 수 있습니다. 추가적인 보호를 위해 기본 안드로이드 키보드로 전환해 주세요.</string>
   <!-- Error alert title -->
-  <string name="Alert.error">Error</string>
+  <string name="Alert.error">오류</string>
   <!-- Keystore error -->
-  <string name="Alert.keystore.generic.android">There is a problem with your Android OS keystore, please contact support@breadwallet.com</string>
+  <string name="Alert.keystore.generic.android">귀하의 안드로이드 OS 키스토어에 문제가 있습니다.</string>
   <!-- KeyStore error, keys are invalidated -->
-  <string name="Alert.keystore.invalidated.android">Your Bread encrypted data was recently invalidated because your Android lock screen was disabled.</string>
+  <string name="Alert.keystore.invalidated.android">귀하의 안드로이드 잠금 화면이 꺼져서 귀하의 암호화 된 데이터가 최근 무효화 되었습니다.</string>
   <!-- Keystore error title -->
-  <string name="Alert.keystore.title.android">Android KeyStore Error</string>
+  <string name="Alert.keystore.title.android">안드로이드 키스토어 오류</string>
   <!-- No internet alert message -->
-  <string name="Alert.noInternet">No internet connection found. Check your connection and try again.</string>
+  <string name="Alert.noInternet">인터넷이 연결되지 않았습니다. 연결을 확인하시고 다시 시도해 주세요.</string>
   <!-- Warning alert title -->
-  <string name="Alert.warning">Warning</string>
+  <string name="Alert.warning">경고</string>
   <!-- 'the addresses were copied'' Alert title -->
-  <string name="Alerts.copiedAddressesHeader">Addresses Copied</string>
+  <string name="Alerts.copiedAddressesHeader">주소들이 복사됨</string>
   <!-- Addresses Copied Alert sub header -->
-  <string name="Alerts.copiedAddressesSubheader">All wallet addresses successfully copied.</string>
+  <string name="Alerts.copiedAddressesSubheader">모든 지갑 주소들이 성공적으로 복사됨.</string>
   <!-- Alert Header Label (the paper key was set) -->
   <string name="Alerts.paperKeySet">Paper Key Set</string>
   <!-- Alert Subheader label (playfully positive) -->
